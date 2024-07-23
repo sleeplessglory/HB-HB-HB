@@ -1,0 +1,10 @@
+.music-video{
+    border-color:rgb(0, 119, 255);
+    background-color: rgb(13, 22, 192);
+    color:white;
+    border-radius: 20px;
+    height:40px;
+    width: 185px;
+    font-size:17px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}  
