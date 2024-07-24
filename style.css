@@ -1,6 +1,8 @@
 .music-video{
+    cursor: pointer;
     border-color:rgb(0, 119, 255);
     background-color: rgb(13, 22, 192);
+    border-style: solid;
     color:white;
     border-radius: 20px;
     height:40px;
@@ -11,5 +13,5 @@
 
 .Delilah{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
+    font-size: 15px;
 }
