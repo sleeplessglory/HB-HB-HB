@@ -1,4 +1,6 @@
 .music-video{
+    cursor: pointer;
+    border-style: solid;
     border-color:rgb(0, 119, 255);
     background-color: rgb(13, 22, 192);
     color:white;
