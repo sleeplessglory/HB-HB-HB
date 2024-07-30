@@ -1,4 +1,16 @@
-.music-video{
+/*External CSS (within .css file)
+https://fonts.google.com for choosing fonts to connect via API or dowload and use locally*/
+@font-face { /*In case we wanna use fonts locally without connecting to google's API*/
+    src: url(fonts/RobotoSlab-VariableFont_wght.ttf);
+    font-family: Roboto-Slab; /*known as*/
+}
+
+@font-face {
+    src: url(fonts/PlaywriteDKLoopet-VariableFont_wght.ttf);
+    font-family: Playwrite-DK-Loopet;
+}
+
+.mv-button { /* "." used for classes */
     cursor: pointer;
     border-style: solid;
     border-color:rgb(0, 119, 255);
@@ -9,4 +21,66 @@
     width: 185px;
     font-size:17px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}  
+}
+
+#title-header { /* "#" used for IDs */
+    font-family: Playwrite-DK-Loopet,Verdana, Arial; /*If the 1st font can't be displayed, the 2nd will be chosen instead*/
+    font-size: 2em; /*1em = 100% or use pixels*/
+}
+
+.author {
+    font-family: Roboto-Slab, "Times New Roman", Georgia;
+    font-weight: normal; /*or bold*/
+    font-style: italic;
+}
+
+body { /*Nothing used for tags*/
+    margin: 0px;
+}
+
+ol {
+    border-style: groove; /*none, solid, dashed, dotted, double, ridge, inset, outset, etc.*/
+    border-width: 5px;
+    border-color: hsl(0, 87%, 44%);
+    /*border: groove 5px hsl(0, 87%, 44%); same as 3 lines above expect the radius below*/
+    border-radius: 7px;
+}
+
+dl {
+    border-bottom: 4px solid gray;
+    border-top: 4px dashed rgb(34, 34, 174);
+    border-left: 4px dotted rgb(10, 112, 26);
+    border-right: 4px ridge rgb(160, 19, 19);
+    border-radius: 10px;
+}
+
+.lyrics {
+    margin: auto;
+}
+
+#ship-to-wreck {
+     /*The first number's for horizontal offset, the second's for vertical offset and the third's for blur*/
+    text-shadow: 5px 4px 6px rgb(231, 21, 21), -5px -4px 6px rgb(32, 17, 251);
+    /*For the second shadow separate them with ",". Negative offset values change the directory*/
+}
+
+#box1 {
+    height: 200px;
+    width: 300px;
+    background-color: rgb(225, 225, 225);
+    box-shadow: 5px 4px 5px;
+    margin: auto; /*Keeps the element in the middle*/
+}
+
+#box2 {
+    margin-left: 50px; /*Margin for each element is individual and ain't related to one another*/
+    margin: 20px; /*The overall margin is only being used despite other margin lines*/
+
+}
+
+#box3 {
+    margin-right: auto; /*Always attached to the left side*/
+    height: 360px;
+    width: 540px;
+    box-shadow: 4px 5px 4px gray;
+}

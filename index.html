@@ -4,18 +4,33 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width, initial scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css"> <!--Relationship of this file with CSS file-->
         <link rel="icon" type="image/jpg" href="images/Favicon+How+Big,+How+Blue,+How+Beautiful.jpeg">
         <title>
             "How Big, How Blue, How Beautiful"
         </title>
+        <!--Internal CSS (within the <head>)
+        <style>
+            body {   For tags we use just their name
+            background-color: blue;
+            }
+            #title-header {   For tags with ID we use "#" before the ID name
+            color: blue;
+            }
+            .author {   For classes we use "." before their name to apply CSS
+            }
+        </style>-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+        <!--3 lines above are copied from and connected to fonts.google.com API, but they can be downloaded and used locally as .ttf files instead. So, we can remove 3 lines above-->
     </head>
     <body>
-        <header style="background-color: rgb(96, 181, 255);">
-            <h1>
+        <header style="background-color: rgb(96, 181, 255);"> <!--Inline CSS (within specific tags)-->
+            <h1 id="title-header">
                 "How Big, How Blue, How Beautiful"
             </h1>
-            <h3>
+            <h3 class="author">
                 by Florence + The Machine
             </h3>
             <a href="">Home</a>
@@ -137,7 +152,7 @@
         <h3>
             Official singles:
         </h3>
-        <dl style="border:solid 4px; border-color:gray; background-color: rgba(255, 255, 255, 0.781);"> <!--Description list tag-->
+        <dl> <!--Description list tag-->
             <dt><b style="color:rgb(10, 10, 137);">"What Kind Of Man"</b></dt> <!--Description term tag-->
             <dd>The song was released on 12 February 2015 as the album's lead single. According to Florence Welch, the song represents a new guitar-driven sonic direction for the band. "It's got very loud guitars and that was very fun to record actually", she said in an interview. "Trying to get exactly the right tone of guitar—I never realised how complicated that is. It took us forever.... Every day there'd be a different guitar sound. We ended up layering with three different guitar sounds, one on top of the other, in order to create this one song."</dd> <!--Description definition tag-->
             <dt><b style="color:rgb(33, 33, 219);">"Ship To Wreck"</b></dt>
@@ -148,23 +163,22 @@
             <dd>The song was released on 27 November 2015 as the album's fourth and final single. The music video for this song was directed by Vincent Haycock: "The cutting of the hair was a direct reference to the biblical [story of] Delilah, but then it veered off into something more personal to Florence. Since this song was always planned as being the end of the series, we decided to make it about [her] returning to her true self, killing off the ego version of herself, and finding her way home again."</dd>
         </dl>
         <hr>
-        <h1>
+        <h1 id="ship-to-wreck">
             "Ship To Wreck"
         </h1>
         <h3>
             by Florence + The Machine
         </h3>
+        <div class="box" id="box1">
+            <img src="images/Ship+to+Wreck+still.jpg"
+            alt='"Ship To Wreck" still'
+            title='"Ship To Wreck" still'
+            height="200">
+        </div><br>
         <a href="https://www.youtube.com/watch?v=B9v8jLBrvug" target="_blank">
-            <button class="music-video">
+            <button class="mv-button">
                 Watch the music video
             </button>
-        </a>
-        <br><br>
-        <a href="https://www.youtube.com/watch?v=B9v8jLBrvug" target="_blank">
-            <img src="images/IMG_0177-1.jpg"
-            height="240"
-            alt="Ship To Wreck still"
-            title='"Ship To Wreck" still'>
         </a>
         <br><br>
         <audio controls muted loop> <!--'autoplay' attribute can also be added, but annoying atm-->
@@ -178,7 +192,7 @@
                 <source src=".webm" type="video/webm"> <!--Back-up in case other formats ain't supported by browsers-->
             </video>
         </a>
-        <pre>
+        <pre class="lyrics">
 Don't touch the sleeping pills, they mess with my head,
 <b>Dredging the Great White Sharks, swimming in the bed,</b> <!--Bold text formatting-->
 <i>And here comes a Killer Whale, to sing me to sleep,</i> <!--Italic text formatting-->
@@ -239,17 +253,17 @@ Did I build this ship to wreck?
             <div>
         </h3>
         <a href="https://www.youtube.com/watch?v=XgeKHTcufLY" target="_blank">
-            <button class="music-video">
+            <button class="mv-button">
                 Watch the music video
             </button>
         </a>
         <br><br>
-        <a href="https://www.youtube.com/watch?v=XgeKHTcufLY" target="_blank">
+        <div class="box" id="box2">
             <img src="images/What+Kind+of+Man+_+St+Jude+21.jpg"
             height="240"
             alt="What Kind Of Man still"
             title='"What Kind Of Man" still'>
-        </a>
+        </div>
         <br><br>
         <audio controls muted loop>
             <source src="audios/Florence_The_Machine_-_What_Kind_Of_Man_47844025.mp3" type="audio/mpeg">
@@ -262,7 +276,7 @@ Did I build this ship to wreck?
                 <source src=".webm" type="video/webm"> <!--Back-up in case other formats ain't supported by browsers-->
             </video>
         </a>
-        <pre>
+        <pre class="lyrics">
 I was on a heavy tip
 Tryna cross a canyon with a broken limb
 You were on the other side
@@ -322,11 +336,6 @@ What kind of man?
 What kind of man loves like this?
 What kind of man?
         </pre>
-
-
-
-
-
         <hr>
         <h1>
             "Delilah"
@@ -335,17 +344,17 @@ What kind of man?
             by Florence + The Machine
         </h3>
         <a href="https://www.youtube.com/watch?v=zZr5Tid3Qw4" target="_blank">
-            <button class="music-video">
+            <button class="mv-button">
                 Watch the music video
             </button>
         </a>
         <br><br>
-        <a href="https://www.youtube.com/watch?v=zZr5Tid3Qw4" target="_blank">
+        <div class="box" id="box3">
             <img src="images/Delilah+Vincent+Haycock+stills+24.jpg"
-            height="240"
+            height="360"
             alt="Delilah still"
             title='"Delilah" still'>
-        </a>
+        </div>
         <br><br>
         <audio controls muted loop>
             <source src="audios/Florence_The_Machine_-_Delilah_47844033.mp3" type="audio/mpeg">
@@ -358,75 +367,62 @@ What kind of man?
                 <source src="videos/Florence + The Machine - Delilah (The Odyssey – Chapter 8).webm" type="video/webm"> <!--Back-up in case other formats ain't supported by browsers-->
             </video>
         </a>
-        <pre>
-            I'm drifting through the halls with the sunrise
-            (Holding on for your call)
-            Climbing up the walls for that flashing light
-            (I can never let go)
-            
-            [Refrain:]
-            Cause I'm gonna be free and I'm gonna be fine
-            (Holding on for your call)
-            Cause I'm gonna be free and I'm gonna be fine
-            (Maybe not tonight)
-            
-            Now the sun is up and I'm going blind
-            (Holding on for your call)
-            Another drink just to pass the time
-            (I can never say no)
-            
-            [Refrain]
-            
-            [Pre-Chorus:]
-            It's a different kind of danger
-            And the bells are ringing out
-            And I'm calling for my mother
-            As I pull the pillars down
-            It's a different kind of danger
-            And my feet are spinning around
-            Never knew I was a dancer
-            'Till Delilah showed me how
-            
-            Too fast for freedom
-            Sometimes it all falls down
-            These chains never leave me
-            I keep dragging them around
-            
-            [Chorus:]
-            Now I'm dancing with Delilah and her vision is mine
-            (Holding on for your call)
-            A different kind of danger in the daylight
-            (I can never let go)
-            Took anything to cut you, I can find
-            (Holding on for your call)
-            A different kind of a danger in the daylight
-            (Can't you let me know?)
-            
-            Now it's one more boy and it's one more lie
-            (Holding on for your call)
-            Taking the pills just to pass the time
-            (I can never say no)
-            
-            [Refrain]
-            
-            [Pre-Chorus]
-            
-            [Chorus]
-            
-            Strung up, strung out for your love
-            Hang in, hung up, it's so rough
-            I'm wrung and ringing out
-            Why can't you let me know?
-            [x2]
-            
-            [Pre-Chorus x2]
-            
-            Too fast for freedom
-            Sometimes it all falls down
-            These chains never leave me
-            I keep dragging them around
-            [x2]            
-        </pre>
+        <div>
+            <pre class="lyrics">
+I'm drifting through the halls with the sunrise
+(Holding on for your call)
+Climbing up the walls for that flashing light
+(I can never let go)
+
+Cause I'm gonna be free and I'm gonna be fine
+(Holding on for your call)
+Cause I'm gonna be free and I'm gonna be fine
+(Maybe not tonight)
+
+Now the sun is up and I'm going blind
+(Holding on for your call)
+Another drink just to pass the time
+(I can never say no)
+
+It's a different kind of danger
+And the bells are ringing out
+And I'm calling for my mother
+As I pull the pillars down
+It's a different kind of danger
+And my feet are spinning around
+Never knew I was a dancer
+'Till Delilah showed me how
+
+Too fast for freedom
+Sometimes it all falls down
+These chains never leave me
+I keep dragging them around
+
+Now I'm dancing with Delilah and her vision is mine
+(Holding on for your call)
+A different kind of danger in the daylight
+(I can never let go)
+Took anything to cut you, I can find
+(Holding on for your call)
+A different kind of a danger in the daylight
+(Can't you let me know?)
+
+Now it's one more boy and it's one more lie
+(Holding on for your call)
+Taking the pills just to pass the time
+(I can never say no)
+
+Strung up, strung out for your love
+Hang in, hung up, it's so rough
+I'm wrung and ringing out
+Why can't you let me know?
+
+Too fast for freedom
+Sometimes it all falls down
+These chains never leave me
+I keep dragging them around       
+            </pre>
+        </div>
         <!--Set the lyrics on the page properly-->
         <footer style="background-color: rgb(233, 233, 233);">
             <hr>
