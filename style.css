@@ -155,4 +155,17 @@ dl {
     float: left; /*won't work if border width takes up the space (contradicts 50% of width above)*/
     padding: 25px;
     box-sizing: border-box; /*resolves the issue above*/
+    text-align: center;
+    
+    max-width: 25%; /*even though we stated above that it's 50%. Same with "min-width"*/
+    min-height: 50%;
+
+    background-color: white;
+}   
+* { /*all the elements*/
+    box-sizing: border-box; /*for all elements width/height will be as they were set (even if we correct border/padding, the 'box' size will remain the same. Usually when border/padding's added, height/weight starts to enlarge. In other words, we have to change the overall width/height before increasing border/padding*/
+}
+.container4boxes {
+    background-color: gray; /*can't see due to boxes taking up the whole space*/
+    height: 100vh; /*viewport height*/
 }
