@@ -1,4 +1,5 @@
 /*External CSS (within .css file)
+Fonts in CSS.
 https://fonts.google.com for choosing fonts to connect via API or dowload and use locally*/
 @font-face { /*In case we wanna use fonts locally without connecting to google's API*/
     src: url(fonts/RobotoSlab-VariableFont_wght.ttf);
@@ -23,6 +24,7 @@ https://fonts.google.com for choosing fonts to connect via API or dowload and us
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/*Fonts in CSS*/
 #title-header { /* "#" used for IDs */
     font-family: Playwrite-DK-Loopet,Verdana, Arial; /*If the 1st font can't be displayed, the 2nd will be chosen instead*/
     font-size: 2em; /*1em = 100% or use pixels*/
@@ -38,6 +40,7 @@ body { /*Nothing used for tags*/
     margin: 0px;
 }
 
+/*Borders in CSS*/
 ol {
     border-style: groove; /*none, solid, dashed, dotted, double, ridge, inset, outset, etc.*/
     border-width: 5px;
@@ -58,29 +61,98 @@ dl {
     margin: auto;
 }
 
+/*Shadows in CSS*/
 #ship-to-wreck {
      /*The first number's for horizontal offset, the second's for vertical offset and the third's for blur*/
     text-shadow: 5px 4px 6px rgb(231, 21, 21), -5px -4px 6px rgb(32, 17, 251);
     /*For the second shadow separate them with ",". Negative offset values change the directory*/
 }
 
+/*Margin in CSS*/
 #box1 {
     height: 200px;
     width: 300px;
     background-color: rgb(225, 225, 225);
-    box-shadow: 5px 4px 5px;
+    box-shadow: 9px 7px 7px;
     margin: auto; /*Keeps the element in the middle*/
 }
-
+/*Margin in CSS*/
 #box2 {
     margin-left: 50px; /*Margin for each element is individual and ain't related to one another*/
     margin: 20px; /*The overall margin is only being used despite other margin lines*/
 
 }
-
+/*Margin in CSS*/
 #box3 {
     margin-right: auto; /*Always attached to the left side*/
     height: 360px;
     width: 540px;
     box-shadow: 4px 5px 4px gray;
+}
+
+.photo-description {
+    font-size: 32px;
+}
+/*Float property in CSS*/
+#img1 {
+    float: left; /*The image is on the left side. Everything below the image on the page will be flowing on the right side of the image*/
+    margin-right: 11px;
+}
+/*Float property in CSS*/
+#img2 {
+    float: right; /*Check out draft.html file for display property with "flow-root" value*/
+    margin-left: 11px;
+}
+/*Overflow property*/
+.overflow {
+    border: 2px dotted;
+    height: 100px;
+    width: 120px;
+    display: inline-block;
+    margin-right: 35px;
+}
+#over1 {
+    overflow: visible; /*Nothing's changed*/
+}
+#over2 {
+    overflow: hidden;
+}
+#over3 {
+    overflow: clip; /*Used with the 2nd property below*/
+    overflow-clip-margin: 40px; /*Shows the allowed amount of pixels to be displayed*/
+}
+#over4 {
+    overflow: scroll; /*Lets to scroll the rest of the content*/
+}
+#over5 {
+    overflow: auto; /*Shows the scroll bar if needed and doesn't show if no need*/
+}
+/*Display property in CSS*/
+#div1 {
+    height: 100px;
+    width: 120px;
+    background-color: #ff1515;
+    display: inline-block; /*"block" value is same as a default <div>, "inline" is same as <span>, "none" removes*/
+}
+#span1 {
+    height: 100px;
+    width: 120px;
+    background-color: rgb(94, 118, 255);
+    display: inline-block;
+    visibility: hidden; /*block is hidden but still takes up its space on the page*/
+}
+#span2 {
+    height: 100px;
+    width: 120px;
+    background-color: rgb(94, 118, 255);
+    display: inline-block;
+}
+/*Height and width properties*/
+.h-w {
+    border: 2px solid;
+    height: auto;
+    width: 50%;
+    float: left; /*won't work if border width takes up the space (contradicts 50% of width above)*/
+    padding: 25px;
+    box-sizing: border-box; /*resolves the issue above*/
 }
