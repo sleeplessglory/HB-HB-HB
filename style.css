@@ -127,7 +127,7 @@ ol {
     border-style: groove; /*none, solid, dashed, dotted, double, ridge, inset, outset, etc.*/
     border-width: 5px;
     border-color: hsl(0, 87%, 44%);
-    /*border: groove 5px hsl(0, 87%, 44%); same as 3 lines above expect the radius below*/
+    /*border: groove 5px hsl(0, 87%, 44%); same as 3 lines above except the radius below*/
     border-radius: 7px;
 }
 dl {
@@ -148,7 +148,6 @@ dl {
 #box1 {
     height: 200px;
     width: 300px;
-    background-color: rgb(225, 225, 225);
     box-shadow: 9px 7px 7px;
     margin: auto; /*Keeps the element in the middle*/
 }
@@ -156,7 +155,6 @@ dl {
 #box2 {
     margin-left: 50px; /*Margin for each element is individual and ain't related to one another*/
     margin: 20px; /*The overall margin is only being used despite other margin lines*/
-
 }
 /*Margin in CSS*/
 #box3 {
@@ -244,4 +242,33 @@ dl {
 .container4boxes {
     background-color: gray; /*can't see due to boxes taking up the whole space*/
     height: 100vh; /*viewport height*/
+}
+/*Position property*/
+#box4 {
+    position: relative;
+    top: 600px;
+    left: 400px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(109, 26, 187);
+}
+#box5 {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(29, 26, 187);
+}
+#box6 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(187, 26, 26);
+}
+#box7 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(33, 135, 18);
 }
