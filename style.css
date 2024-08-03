@@ -253,7 +253,7 @@ dl {
     background-color: rgb(109, 26, 187);
 }
 #box5 {
-    position: fixed;
+    /*Let's turn it off now, kind of annoying later on. position: fixed;*/
     top: 0px;
     right: 0;
     width: 250px;
@@ -261,14 +261,18 @@ dl {
     background-color: rgb(29, 26, 187);
 }
 #box6 {
-    position: relative;
+    position: relative; /*"sticky" value is similar to 'fixed': we have some space preserved. When we scroll through it, it gets stuck at the corner*/
+    bottom: 200px;
+    left: 150px;
     width: 200px;
     height: 200px;
     background-color: rgb(187, 26, 26);
 }
 #box7 {
-    position: absolute;
+    position: absolute; /*"static" will get it back to the default position*/
     width: 100px;
     height: 100px;
     background-color: rgb(33, 135, 18);
+    top: 50px;
+    left: 50px;
 }
