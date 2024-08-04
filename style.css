@@ -18,7 +18,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .polaroid1 {
-    background-color: rgb(176, 235, 254);
+    background-color: rgba(176, 234, 254, 0.812);
     width: 400px;
     height: 550px;
     margin-left: 64px;
@@ -32,10 +32,10 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: absolute;
     top: 40px;
     left: 50px;
-    
+    /*opacity: 0.812; same as alpha channel in rgba for colours, but for images*/ 
 }
 .polaroid2 {
-    background-color: rgb(176, 235, 254);
+    background-color: rgba(176, 234, 254, 0.812); /*alpha channel in rgba stands for the opacity of the colour*/
     width: 400px;
     height: 550px;
     margin-left: 64px;
@@ -52,7 +52,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
 }
 .polaroid3 {
-    background-color: rgb(176, 235, 254);
+    background-color: rgba(176, 235, 254, 0.812);
     margin-left: 64px;
     margin-top: 50px;
     margin-bottom: 70px;
@@ -70,7 +70,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 .polaroid4 {
     display: inline-block;
     position: relative;
-    background-color: rgb(176, 235, 254);
+    background-color: rgba(176, 235, 254, 0.812);
     margin-left: 64px;
     margin-top: 50px;
     margin-bottom: 70px;
@@ -86,7 +86,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 .polaroid5 {
     display: inline-block;
     position: relative;
-    background-color: rgb(106, 212, 248);
+    background-color: rgba(106, 213, 248, 0.812);
     margin-left: 64px;
     margin-bottom: 70px;
     width: 400px;
@@ -276,3 +276,21 @@ dl {
     top: 50px;
     left: 50px;
 }
+/*Background images*/
+#index { /*<body> with "index" id*/
+    background-image: url(images/What+Kind+of+Man+_+St+Jude+15.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+#phshoot {
+    background-image: url(images/What+Kind+of+Man+_+St+Jude+NN.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
