@@ -11,6 +11,7 @@
         <!--Float property-->
         <!--Allows other elements (below it) to flow around it-->
         <div style="border: 4px solid; display: flow-root;"> <!--"flow-root" allows to keep all the elements within the container. So, they don't stick out of it-->
+            <h1 style="background-color: rgb(206, 206, 206);">Float property</h1><br>
             <img src="images/How+Big,+How+Blue,+How+Beautiful+29.jpeg"
             id="img1"
             alt="Photoshoot image 1"
@@ -33,7 +34,7 @@
         </div><hr>
         <!--Overflow property-->
         <!--Lets to define the behaviour of the content when it doesn't fit in the parent element box. So, the content overflows-->
-        
+        <h1 style="background-color: rgb(206, 206, 206);">Overflow property</h1><br>
             <div class="overflow" id="over1">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga esse magnam nostrum fugiat exercitationem vero officiis dolorem, similique omnis amet possimus reiciendis hic voluptatibus modi quaerat temporibus ratione quo molestiae!</p>
             </div>
@@ -55,11 +56,13 @@
         <!--"block-level" elements (h1, div, p, form, footer, etc.) start on a new line and takes up the full available width-->
         <!--"inline" elements (span, a, img, etc.) start where needed and width is as it's needed-->
         <br><hr>
+        <h1 style="background-color: rgb(206, 206, 206);">Display property</h1><br>
         <div id="div1">div</div>
         <span id="span1">span</span>
         <span id="span2">span2</span>
         <hr>
         <!--Height and width properties-->
+        <h1 style="background-color: rgb(206, 206, 206);">Height and width property</h1><br>
         <div class="container4boxes">
             <div class="h-w">
                 <h1>Div #1</h1>
@@ -70,6 +73,7 @@
         </div>
         <hr>
         <!--Position property-->
+        <h1 style="background-color: rgb(206, 206, 206);">Position property</h1><br>
         <div id="box4"></div>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae vitae, ipsum incidunt voluptatum amet nihil libero natus nisi dolore corporis architecto numquam nemo ipsam nulla totam neque minus reprehenderit? Dolore?</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae vitae, ipsum incidunt voluptatum amet nihil libero natus nisi dolore corporis architecto numquam nemo ipsam nulla totam neque minus reprehenderit? Dolore?</p>
@@ -96,6 +100,53 @@
             <div id="box7"></div>
         </div>
         <hr>
+        <!--Combinators-->
+        <h1 style="background-color: rgb(206, 206, 206);">Combinators</h1><br>
+        <div id="container-combinators">
+            <p>This is #1</p>
+            <p>This is #2</p>
+            <div>
+                <p>This is #3</p>
+            </div>
+        </div>
+        <p>This is #4</p>
+        <p>This is #5</p><hr>
+        <h1 style="background-color: rgb(206, 206, 206);">Pseudo-classes. Note: Other CSS properties are applied in other HTML files</h1><br>
+        <ul id="pseudo">
+            <li>This is #1</li>
+            <li>This is #2</li>
+            <li>This is #3</li>
+            <li>This is #4</li>
+            <li>This is #5</li>
+        </ul><br>
+        <div id="greeting-div">Hover here
+            <p>Hello there!</p>
+        </div><br><br><br><br><hr>
+        <h1 style="background-color: rgb(206, 206, 206);">Dropdown menu</h1><br>
+        <div class="dropdown">
+            <button>Music</button>
+            <div class="content">
+                <a href="">Streaming</a>
+                <a href="">CD</a>
+                <a href="">Vinyl</a>
+            </div>
+        </div>
         
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fugiat, facilis neque, aperiam unde itaque iusto voluptatum atque impedit ab, suscipit nam libero deserunt! Perspiciatis architecto est eum aliquam neque!</p>
+
+
+
+
+
+
+        <!--Pagination starts here. In this example without JavaScript knowledge we build it this way currently-->
+        <div class="pagination">
+            <a href="photoshoot.html"><</a>
+            <a href="index.html">1</a>
+            <a href="purchase.html">2</a>
+            <a href="photoshoot.html">3</a>
+            <a href="drafts.html" class="active">4</a>
+            <a href="index.html">></a>
+        </div>
     </body>
 </html>

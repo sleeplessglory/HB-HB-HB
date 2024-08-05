@@ -98,6 +98,9 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     top: 40px;
     left: 50px;
 }
+dl {
+    background-color: rgba(161, 168, 242, 0.64);
+}
 /*
 Fonts in CSS.
 https://fonts.google.com for choosing fonts to connect via API or dowload and use locally*/
@@ -291,6 +294,158 @@ dl {
     background-attachment: fixed;
     background-size: cover;
 }
-
-
-
+/*Combinators*/
+#container-combinators {
+    border: 2px solid; /*To distinguish*/
+}
+#container-combinators p { /*Descendant combinator: an empty space between one and another selectors. Applied to children and their children, etc.*/
+    background-color: yellow;
+}
+#container-combinators > p { /*Child combinator: ">" between one and another selectors. Applied to children only*/
+    background-color: purple;
+}
+#container-combinators ~ p { /*General sibling(s) combinator: "~" between the selectors is needed. Applied to sibling(s) only*/
+    background-color: gray;
+}
+#container-combinators + p { /*Adjacent sibling combinator: "+" between the selectors is used. Applied to the nearest sibling only*/
+    background-color: green;
+}
+/*Pseudo-classes*/
+header a { /*Any "anchor" tags within the <header> tags ("descendant" combinator). "link" pseudo-class is NOT used*/
+    color: rgb(193, 44, 178);
+}
+/*a:link { With this example color change will be applied only to the links leading outside of the website. Local links for the website won't be changed!
+    color: rgb(185, 51, 172);
+}*/
+header a:hover { /*Any <a> tags within <header> tags will be changed when we "hover" (pseudo-class) over them*/
+    color: rgb(225, 62, 209);
+    font-size: 1.1em;
+}
+header a:active { /*"active" pseudo-class stands for the moment, when users click on the link and holds it*/
+    color: rgb(23, 40, 150); 
+    font-size: 1.1em;
+}
+header a:visited { /*"visited" pseudo-class stands for the state when the link is visited*/
+    color:rgb(108, 107, 107);
+}
+/*We can use pseudo-classes everywhere, even without combinators*/
+#pseudo li:hover {
+    background-color: yellow;
+}
+#pseudo li:not(:hover) { /*In this case we use "not" pseudo-class in order to specify the colours when we do NOT hover over the list items*/
+    background-color: rgb(23, 32, 122);
+}
+#pseudo li:nth-child(2n+1):hover{ /*"nth-child()" pseudo-class picks only specified elements. If the value is (odd), then all odd elements will be chosen, same with (even), (2), (5), (3n) meaning every 3rd element, (2n+1) meaning to start with the 1st and then every second, etc.*/
+    background-color: rgb(184, 58, 189);
+}
+#greeting-div p {
+    background-color: rgb(102, 172, 238);
+    padding: 10px;
+    display: none; /*We hide it in order to show with the pseudo-class example below*/
+}
+#greeting-div:hover p { /*This time we wrote "hover" pseudo-class after the <div> ID name, because we can't hover over the hidden <p>*/
+    display: block; /*Now it's visible*/
+}
+/*Pseudo-elements in CSS*/
+dd::first-line { /*In description definitions the first line will be modified*/
+    background-color: rgba(20, 151, 31, 0.537);
+    color: white;
+}
+dt::first-letter { /*First letter of every description term is coloured*/
+    font-size: 1.7em;
+    color: rgb(161, 19, 19);
+}
+dd::selection { /*If we select ("selection" pseudo-element) any text in description definition, it will be coloured as white with grey background colour*/
+    color: white;
+    background-color: rgb(103, 98, 98);
+}
+#ul-albvers > li::before { /*For any list element in unordered list set anything "before" (pseudo-element) or "after" the text. ">" (child combinator) is used, so, we don't modify another grandchildren list elements*/
+    content: "🎙"; /*Set "" and between them press "Win" + ":"*/
+    font-size: 1.25em; /*Size of the content*/
+}
+#ul-albvers > li::marker { /*"marker" (pseudo-element) modifies the black dot marker before (children) list items*/
+    content: ""; /*Any emoji can be pasted or leave it blank to remove those markers*/
+    color: rgb(187, 30, 30); /*Colour of some markers can be modified too*/
+}
+/*Pagination in CSS*/
+.pagination {
+    text-align: center;
+}
+.pagination a { /*Styling the links within the <div>*/
+    color: white;
+    text-decoration: none; /*Elimitaing underlining of the links*/
+    padding: 22px 30px; /*22px by 30px*/
+    display: inline-block; /*So, we can adjust width and height now*/
+    background-color: rgb(25, 25, 152);
+    margin-bottom: 20px;
+}
+.pagination a.active { /*Within the "pagination" class find any <a> with "active" class spesified. To specify the class of the tag use "." in between*/
+    background-color: rgb(10, 10, 78);
+    font-weight: bold;
+}
+.pagination a:hover:not(.active) { /*In "pagination" class find any <a> and modify them when we "hover" over them while they're NOT "active" (class!="active") atm*/
+    background-color: rgb(143, 31, 31);
+}
+/*Dropdown menu*/
+.dropdown {
+    display: inline-block;
+}
+.dropdown button {
+    background-color: hsl(0, 0%, 80%);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.dropdown .content {
+    display: none;
+    position: absolute;
+    background-color: hsl(0, 0%, 95%);
+    min-width: 100px;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content{
+    display: block;
+}
+.dropdown:hover button {
+    background-color: hsl(0, 0%, 70%);
+}
+.dropdown a:hover {
+    background-color: hsl(0, 0%, 90%);
+} /*No comment left on this part since it was all explained earlier*/
+/*Navigation bar in CSS*/
+#photoshoot-1-header {
+    text-align: center;
+}
+.navbar ul {
+    list-style-type: none; /*Another or even a proper way to remove the marks of the list items*/
+    background-color: hsl(240, 85%, 30%);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+.navbar a:hover {
+    background-color: hsl(240, 86%, 20%);
+}
+.navbar li {
+    float: left;
+}
+/*Already written above
+body {
+    margin: 0px;
+}*/
+main {
+    margin: 0px; /*If we want margins around the main content, we can set it here. No need atm*/
+}
