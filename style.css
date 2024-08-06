@@ -17,6 +17,11 @@ font-size:17px;
 font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#phshoot div:hover {
+    cursor: pointer;
+/*    height: 570px;
+    width: 420px; The whole polaroid should slowly enlarge a little bit*/
+}
 .polaroid1 {
     background-color: rgba(176, 234, 254, 0.812);
     width: 400px;
@@ -419,6 +424,7 @@ dd::selection { /*If we select ("selection" pseudo-element) any text in descript
     background-color: hsl(0, 0%, 90%);
 } /*No comment left on this part since it was all explained earlier*/
 /*Navigation bar in CSS*/
+/*The author offered his own way to create this navbar (for the bottom of the page). If we want it on the top and have the links right in the middle, we shouldn't use <ul> at all. Instead, add these <a> into a <div> within <nav>, make them inline-block and then text-align to the center*/
 #photoshoot-1-header {
     text-align: center;
 }
@@ -449,3 +455,147 @@ body {
 main {
     margin: 0px; /*If we want margins around the main content, we can set it here. No need atm*/
 }
+/*Website layout in CSS*/
+/*Already written above
+* {
+    box-sizing: border-box;
+} So, for the case below we mentioned the width of the tags. Now padding will be included in those % specified*/
+#index-header {
+    text-align: center;
+    padding: 20px;
+}
+.index-navbar {
+    background-color: rgb(125, 204, 125);
+    height: 50px;
+}
+aside {
+    width: 20%; /*This tag will take up only 20% of the width available*/
+    float: left; /*Now the <section> and <article> elements flow*/
+    padding: 10px;
+}
+section {
+    width: 40%;
+    float: left; 
+    padding: 10px;
+}
+article {
+    width: 40%; 
+    float: left;
+    padding: 10px;
+}
+/*Also an inline CSS was used to stop flowing later on: 
+<h3 style="clear: both;">*/
+/*For mobile version we'd like those 3 tags above to be on top of each other. So, let's add the rule below*/
+@media screen and (max-width: 600px) { /*If the width of the window or phone display is 600px or below, then change CSS properties*/
+    aside, section, article {/*tags we'd like to modify*/
+        width: 100%; /*These elements will take up 100% of the width now*/
+    }
+}
+/*Image gallery with CSS*/
+.photo-gallery {
+    display: inline-block;
+    border: 1px solid hsl(240, 74%, 45%);
+    margin: 5px;
+    width: 200px;
+}
+.photo-gallery .description {
+    padding: 10px;
+    text-align: center;
+}
+.photo-gallery:hover {
+    border: 1px solid hsl(240, 74%, 30%);
+}
+.photo-gallery img {
+    width: 100%; /*We set the width of the images to be 100% of the width of the "photo-gallery" class (mentioned above)*/
+    height: auto;
+}
+/*Icons with CSS*/
+/*Consider using fontawesome.com (or google icons)*/
+.icons {
+    text-align: center;
+}
+.fa-solid.fa-house.fa-3x { /*Paste the class name of the icon and change " " with "."*/
+    color: rgb(41, 103, 38);
+}
+.fa-solid.fa-house.fa-3x:hover {
+    color: hsl(117, 46%, 38%);
+}
+.fa-brands.fa-twitter.fa-3x {
+    color: rgb(39, 157, 235);
+}
+.fa-brands.fa-twitter.fa-3x:hover {
+    color: hsl(204, 100%, 60%);
+}
+.fa-brands.fa-youtube.fa-3x {
+    color: rgb(213, 17, 17);
+}
+.fa-brands.fa-youtube.fa-3x:hover {
+    color: hsl(0, 85%, 55%);
+}
+.fa-brands.fa-instagram.fa-3x {
+    color: rgb(220, 109, 11);
+}
+.fa-brands.fa-instagram.fa-3x:hover {
+    color: hsl(28, 90%, 55%);
+}
+.icons a {
+    text-decoration: none; /*Remove underlines out of <a>*/
+    margin-right: 20px;
+}
+/*Flexbox in CSS*/
+.box {
+    width: 150px;
+    height: 150px;
+    font-size: 8em;
+    text-align: center;
+    border-radius: 15px;
+}
+#box_1 {
+    background-color: hsl(0, 87%, 44%);
+    /*align-self: start; When we apply to single boxes
+    align-self: center; Now only the 1st boxes's in the middle (on the Y-axis)
+    align-self: end; At the bottom*/
+}
+#box_2 {
+    background-color: hsl(61, 72%, 52%);
+}
+#box_3 {
+    background-color: hsl(118, 87%, 44%);
+    order: 1; /*Will remove the 3rd box to the end. "-1" will make it the 1st on the row*/
+}
+#box_4 {
+    background-color: hsl(239, 87%, 44%);
+}
+.flexbox {
+    border: 10px solid black;
+    height: 90vh; /*90% of viewport height/units*/
+    display: flex; /*By default it means that "flex-direction:" is "row"*/
+    /*flex-direction: row-reverse; Now boxes from 4 to 1 and on the right corner. Other values are 
+    flex-direction: column; 
+    flex-direction: column-reverse*/
+    /*justify-content: flex-start; By default "flex-start" with no change. 
+    justify-content: flex-end; starts from the end with 4 to 1 (to the left). Imagine as an X-axis
+    justify-content: space-between; puts space evenly only between the boxes. So, we can adjust the window width
+    justify-content: space-around; same as above but also extra little spaces added to the left side of the 1st box and to the right side of the last
+    justify-content: space-evenly; space is added evenly everywhere: between the boxes and outside of them
+    align-items: flex-start; Now think of it as a Y-axis (cross-axis) changes. flex-start is a default value with no changes at all
+    align-items: flex-end; Moves the initial horizontal line to the bottom (still horizontal)
+    align-items: center; Moves to the center (still keeps it horizontal)
+    align-items: baseline; This time around the text will be aligned (if we make one of the fonts really small, they will be aligned with the rest on the Y-axis, and the small text's box will be moving accordingly)    
+    Here extra 4 boxes were added to show the examples below!
+    flex-wrap: nowrap; The default state with no change
+    flex-wrap: wrap; Boxes will get back their size and be wrapped (if enough space, otherwise on the new line)
+    flex-wrap: wrap-reverse; The reverse order from the left bottom angle
+    align-content: flex-start; Used with "flex-wrap: wrap". Now all the empty space between boxes on the Y-axis are gone
+    align-content: flex-end; same as above but on the bottom of the page
+    align-content: center; Boxes're centered (still with no space between them on Y-axis)
+    align-content: space-evenly; Put spaces evenly between the top border, the boxes (if more than 1 line) and the bottom border by Y-axis
+    align-content: space-between; If more than 1 line of boxes, the 1st is on the top and the 2nd on the bottom
+    flex-wrap: wrap;
+    align-content: flex-start;
+    column-gap: 1em; Adds a gap of 1em between the columns
+    row-gap: 1em; Adds a gap of 1em between the rows
+    Now we deleted previous extra 4 boxes.
+    */
+}
+/*Transformations in CSS*/

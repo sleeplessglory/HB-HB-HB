@@ -25,8 +25,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
         <!--3 lines above are copied from and connected to fonts.google.com API, but they can be downloaded and used locally as .ttf files instead. So, we can remove 3 lines above-->
     </head>
+    <!--Semantic tags keep your content organised:
+    <header> is introductory content (e.g. title, logo etc.)
+    <nav> is navigation bar with links (sometimes at the bottom of the page)
+    <main> is the main content with many sub elements (section, aside, article, generic <div>s)
+    <section> is dependent content (if you put it on another webpage, it won't make sense)
+    <aside> is side content (author info, fun facts, external links, comments, etc.)
+    <article> is independent content (news articles, job articles, blog posts)
+    <footer> is closing content (author info, copyright info, etc.)
+    These tags ain't mandatory-->
     <body id="index">
-        <header style="background-color: rgb(201, 220, 255);"> <!--Inline CSS (within specific tags)-->
+        <header id="index-header" style="background-color: rgb(201, 220, 255);"> <!--Inline CSS (within specific tags)-->
             <h1 id="title-header">
                 "How Big, How Blue, How Beautiful"
             </h1>
@@ -39,11 +48,32 @@
             <a href="drafts.html" target="_blank">Drafts</a>
             <a href="forms.html" target="_blank">Forms</a>
             <a href="">Contact Us</a>
-            <hr>
         </header>
-        
-        <hr>
-        <h3>
+        <nav class="index-navbar">
+        <!--Ain't filled for now-->
+        </nav>
+        <main> <!--These tags ain't mandatory-->
+            <aside>
+                <h2>This is aside</h2>
+                <p>Interesting facts: Welch was the oldest of three children in an upper-middle-class family in south London. Her father was a British advertising executive whose fondness for punk informed some of Welch's earliest musical memories. Her mother, an American professor of Renaissance studies, exposed Welch to the art and music of that era.</p>
+            </aside>
+            <section>
+                <h2>This is a section</h2>
+                <p>How Big, How Blue, How Beautiful is the third studio album by the English indie rock band Florence and the Machine, released on 29 May 2015 by Island Records. After her year-long break from music, the lead vocalist, Florence Welch, returned to configure the album, recording material that dealt with personal conflicts and struggles. In comparison to the band's two previous studio albums, it is much more refined and stripped-down instrumentally, and incorporates a mixture of musical influences such as folk, blues and gospel.
+
+                How Big, How Blue, How Beautiful was met with positive reviews from music critics, who commended the album for its cohesion, production and Welch's vocal delivery. It appeared on several year-end critics' lists. The album entered the UK Albums Chart at number one with 68,788 copies sold in its first week, becoming the band's third consecutive number-one album. Four singles were released, "What Kind of Man", "Ship to Wreck", "Queen of Peace" and "Delilah". The album earned the band five Grammy Award nominations, in addition to being shortlisted for the 2015 Mercury Prize.</p>
+            </section>
+            <article>
+                <h2>Florence Welch Reveals Recent ‘Emergency’ Surgery: ‘It Saved My Life’</h2> <!--This is an article-->
+                <p>Florence Welch revealed that she recently underwent “emergency” surgery that “saved [her] life” in a note to fans explaining a string of recently-canceled Florence and the Machine concerts.
+
+                Welch didn’t specify what the surgery was, or the risk she was facing, saying only: “I’m so sorry that I had to cancel the last couple shows. My feet are fine, I had to have emergency surgery for reasons I don’t really feel strong enough to go into yet, but it saved my life.” (The remark about her feet is ostensibly a nod to a broken foot she suffered on stage last year, which caused Florence and the Machine to postpone their U.K. tour.)
+                
+                Welch continued: “Suffice to say I wish the songs were less accurate in their predictions. But creativity is a way of coping, mythology is [a] way of making sense. And the dark fairytale of Dance Fever, with all its strange prophecies, will provide me with much needed strength and catharsis right now.” 
+                </p>
+            </article>
+        </main>
+        <h3 style="clear: both;">
             Official singles:
         </h3>
         <dl> <!--Description list tag-->
@@ -326,6 +356,21 @@ I keep dragging them around
             <a href="drafts.html">4</a>
             <a href="purchase.html">></a>
         </div>
+        <!--Icons start here-->
+            <div class="icons">
+                <a href="index.html">
+                    <i class="fa-solid fa-house fa-3x"></i> <!--Added "fa-5x" to enlarge it-->
+                </a>
+                <a href="https://twitter.com/florencemachine" target="_blank">
+                    <i class="fa-brands fa-twitter fa-3x"></i>
+                </a>
+                <a href="https://youtube.com/florencemachine" target="_blank">
+                    <i class="fa-brands fa-youtube fa-3x"></i>
+                </a>
+                <a href="https://instagram.com/florence" target="_blank">
+                    <i class="fa-brands fa-instagram fa-3x"></i>
+                </a>
+        </div>
         <!--Set the lyrics on the page properly-->
         <footer style="background-color: rgb(233, 233, 233);">
             <hr>
@@ -334,5 +379,6 @@ I keep dragging them around
             &copysr; 2015 Island Records, a division of Universal Music Operations Limited <!--Phonographic copyright symbol-->
             <br><a href="mailto:IslandRecords@UMGstores.com">IslandRecords@UMGstores.com</a>
         </footer>
+        <script src="https://kit.fontawesome.com/b68b82c466.js" crossorigin="anonymous"></script> <!--For icons-->
     </body>
 </html>
