@@ -5,16 +5,16 @@
 }
 
 .mv-button { /* "." used for classes */
-cursor: pointer;
-border-style: solid;
-border-color:rgb(0, 119, 255);
-background-color: rgb(13, 22, 192);
-color:white;
-border-radius: 20px;
-height:40px;
-width: 185px;
-font-size:17px;
-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    border-style: solid;
+    border-color:rgb(0, 119, 255);
+    background-color: rgb(13, 22, 192);
+    color:white;
+    border-radius: 20px;
+    height:40px;
+    width: 185px;
+    font-size:17px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #phshoot div:hover {
@@ -111,7 +111,7 @@ Fonts in CSS.
 https://fonts.google.com for choosing fonts to connect via API or dowload and use locally*/
 @font-face { /*In case we wanna use fonts locally without connecting to google's API*/
     src: url(fonts/RobotoSlab-VariableFont_wght.ttf);
-    font-family: Roboto-Slab; /*known as*/
+    font-family: Roboto-Slab; /*Set your a.k.a. for this font to use later on*/
 }
 @font-face {
     src: url(fonts/PlaywriteDKLoopet-VariableFont_wght.ttf);
@@ -310,7 +310,7 @@ dl {
     background-color: purple;
 }
 #container-combinators ~ p { /*General sibling(s) combinator: "~" between the selectors is needed. Applied to sibling(s) only*/
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
 }
 #container-combinators + p { /*Adjacent sibling combinator: "+" between the selectors is used. Applied to the nearest sibling only*/
     background-color: green;
@@ -379,7 +379,7 @@ dd::selection { /*If we select ("selection" pseudo-element) any text in descript
 .pagination a { /*Styling the links within the <div>*/
     color: white;
     text-decoration: none; /*Elimitaing underlining of the links*/
-    padding: 22px 30px; /*22px by 30px*/
+    padding: 22px 30px; /*Values (if 3) apply to: top left&right bottom; If 2: top left&right. If 4: top right bottom left*/
     display: inline-block; /*So, we can adjust width and height now*/
     background-color: rgb(25, 25, 152);
     margin-bottom: 20px;
@@ -661,7 +661,8 @@ article {
     animation-play-state: running; Active state
     animation-timing-function: ease-in-out; Speed default value. By opening the inspector tab in browser you can click on the icon for this line and change the timing function. The new value can be copied and pasted instead of the current one
     animation-timing-function: linear; Constant speed (no acceleration throughout the whole duration)
-    animation-timing-function: steps(5); For slow motion effects. The animation will be performed in 5 stopped states*/
+    animation-timing-function: steps(5); For slow motion effects. The animation will be performed in 5 stopped states
+    transition: watch for this animation property in the next exercise (first JS) below*/
     animation-name: glow;
     animation-duration: 10s;
 }
@@ -707,4 +708,40 @@ article {
 }
 @keyframes glow {
     65%{box-shadow: 0px 0px 50px yellow}
+}
+
+
+
+/*JavaScript exercises start here
+Counter program*/
+#countLabel {
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Helvetica;
+}
+#counterContainer {
+    text-align: center;
+}
+.bttns {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: hsl(204, 100%, 60%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25;
+}
+.bttns:hover {
+    background-color: hsl(204, 66%, 45%);
+}
+/*Random number generator*/
+#myButton {
+    text-align: center;
+    font-size: 3em;
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+#myLabel {
+    font-size: 3em;
 }
