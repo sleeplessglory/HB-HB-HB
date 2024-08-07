@@ -135,7 +135,7 @@ ol {
     border-style: groove; /*none, solid, dashed, dotted, double, ridge, inset, outset, etc.*/
     border-width: 5px;
     border-color: hsl(0, 87%, 44%);
-    /*border: groove 5px hsl(0, 87%, 44%); same as 3 lines above except the radius below*/
+    /*border: groove 5px hsl(0, 87%, 44%); same as 3 lines above except for the radius below*/
     border-radius: 7px;
 }
 dl {
@@ -162,7 +162,7 @@ dl {
 /*Margin in CSS*/
 #box2 {
     margin-left: 50px; /*Margin for each element is individual and ain't related to one another*/
-    margin: 20px; /*The overall margin is only being used despite other margin lines*/
+    margin: 20px; /*The overall margin is only being used despite other margin modifications*/
 }
 /*Margin in CSS*/
 #box3 {
@@ -200,7 +200,7 @@ dl {
     overflow: hidden;
 }
 #over3 {
-    overflow: clip; /*Used with the 2nd property below*/
+    overflow: clip; /*Used in pair with the 2nd property below*/
     overflow-clip-margin: 40px; /*Shows the allowed amount of pixels to be displayed*/
 }
 #over4 {
@@ -214,7 +214,7 @@ dl {
     height: 100px;
     width: 120px;
     background-color: #ff1515;
-    display: inline-block; /*"block" value is same as a default <div>, "inline" is same as <span>, "none" removes*/
+    display: inline-block; /*"block" value is the same as a default <div>, "inline" is the same as <span>, "none" removes*/
 }
 #span1 {
     height: 100px;
@@ -245,7 +245,7 @@ dl {
     background-color: white;
 }   
 * { /*all the elements*/
-    box-sizing: border-box; /*for all elements width/height will be as they were set (even if we correct border/padding, the 'box' size will remain the same. Usually when border/padding's added, height/weight starts to enlarge. In other words, we have to change the overall width/height before increasing border/padding*/
+    box-sizing: border-box; /*for all elements width/height will be as they were set (even if we correct border/padding, the 'box' size will remain the same. Usually when border/padding's added, height/width starts to enlarge. In other words, we have to change the overall width/height before increasing border/padding*/
 }
 .container4boxes {
     background-color: gray; /*can't see due to boxes taking up the whole space*/
@@ -261,7 +261,7 @@ dl {
     background-color: rgb(109, 26, 187);
 }
 #box5 {
-    /*Let's turn it off now, kind of annoying later on. position: fixed;*/
+    /*position: fixed; Let's turn it off now, kind of annoying later on*/
     top: 0px;
     right: 0;
     width: 250px;
@@ -303,10 +303,10 @@ dl {
 #container-combinators {
     border: 2px solid; /*To distinguish*/
 }
-#container-combinators p { /*Descendant combinator: an empty space between one and another selectors. Applied to children and their children, etc.*/
+#container-combinators p { /*Descendant combinator: an empty space between one and other selectors. Applied to children and their children, etc.*/
     background-color: yellow;
 }
-#container-combinators > p { /*Child combinator: ">" between one and another selectors. Applied to children only*/
+#container-combinators > p { /*Child combinator: ">" between one and other selectors. Applied to children only*/
     background-color: purple;
 }
 #container-combinators ~ p { /*General sibling(s) combinator: "~" between the selectors is needed. Applied to sibling(s) only*/
@@ -316,7 +316,7 @@ dl {
     background-color: green;
 }
 /*Pseudo-classes*/
-header a { /*Any "anchor" tags within the <header> tags ("descendant" combinator). "link" pseudo-class is NOT used*/
+header a { /*Any "anchor" tags within the <header> tags ("descendant" combinator). "link" pseudo-class is NOT used this time*/
     color: rgb(193, 44, 178);
 }
 /*a:link { With this example color change will be applied only to the links leading outside of the website. Local links for the website won't be changed!
@@ -326,7 +326,7 @@ header a:hover { /*Any <a> tags within <header> tags will be changed when we "ho
     color: rgb(225, 62, 209);
     font-size: 1.1em;
 }
-header a:active { /*"active" pseudo-class stands for the moment, when users click on the link and holds it*/
+header a:active { /*"active" pseudo-class stands for the moment, when users click on the link and hold it*/
     color: rgb(23, 40, 150); 
     font-size: 1.1em;
 }
@@ -369,7 +369,7 @@ dd::selection { /*If we select ("selection" pseudo-element) any text in descript
     font-size: 1.25em; /*Size of the content*/
 }
 #ul-albvers > li::marker { /*"marker" (pseudo-element) modifies the black dot marker before (children) list items*/
-    content: ""; /*Any emoji can be pasted or leave it blank to remove those markers*/
+    content: ""; /*Any emoji can be pasted or leave it blank to remove those markers. Better way of removing marks is shown in the "Navigation bar" part below*/
     color: rgb(187, 30, 30); /*Colour of some markers can be modified too*/
 }
 /*Pagination in CSS*/
@@ -561,7 +561,7 @@ article {
 }
 #box_3 {
     background-color: hsl(118, 87%, 44%);
-    order: 1; /*Will remove the 3rd box to the end. "-1" will make it the 1st on the row*/
+    order: 1; /*Will remove the 3rd box to the end. "-1" will make it the 1st on the row. So, we reorder them*/
 }
 #box_4 {
     background-color: hsl(239, 87%, 44%);
@@ -570,15 +570,16 @@ article {
     border: 10px solid black;
     height: 90vh; /*90% of viewport height/units*/
     display: flex; /*By default it means that "flex-direction:" is "row"*/
-    /*flex-direction: row-reverse; Now boxes from 4 to 1 and on the right corner. Other values are 
+    flex-direction: row-reverse;
+    /*flex-direction: row-reverse; Now boxes're shown from 1 to 4 (towards left) and on the right corner (4321)
     flex-direction: column; 
     flex-direction: column-reverse*/
     /*justify-content: flex-start; By default "flex-start" with no change. 
-    justify-content: flex-end; starts from the end with 4 to 1 (to the left). Imagine as an X-axis
+    justify-content: flex-end; Imagine for the X-axis. Starts from the end with 4 to 1 (to the left) (1234)
     justify-content: space-between; puts space evenly only between the boxes. So, we can adjust the window width
     justify-content: space-around; same as above but also extra little spaces added to the left side of the 1st box and to the right side of the last
     justify-content: space-evenly; space is added evenly everywhere: between the boxes and outside of them
-    align-items: flex-start; Now think of it as a Y-axis (cross-axis) changes. flex-start is a default value with no changes at all
+    align-items: flex-start; Imagine for the Y-axis (cross-axis) changes. A default value with no changes at all
     align-items: flex-end; Moves the initial horizontal line to the bottom (still horizontal)
     align-items: center; Moves to the center (still keeps it horizontal)
     align-items: baseline; This time around the text will be aligned (if we make one of the fonts really small, they will be aligned with the rest on the Y-axis, and the small text's box will be moving accordingly)    
@@ -586,16 +587,124 @@ article {
     flex-wrap: nowrap; The default state with no change
     flex-wrap: wrap; Boxes will get back their size and be wrapped (if enough space, otherwise on the new line)
     flex-wrap: wrap-reverse; The reverse order from the left bottom angle
-    align-content: flex-start; Used with "flex-wrap: wrap". Now all the empty space between boxes on the Y-axis are gone
+    align-content: flex-start; Used in pair with "flex-wrap: wrap" for the Y-axis. With "flex-start" value all the empty spaces between boxes on the Y-axis are gone
     align-content: flex-end; same as above but on the bottom of the page
     align-content: center; Boxes're centered (still with no space between them on Y-axis)
     align-content: space-evenly; Put spaces evenly between the top border, the boxes (if more than 1 line) and the bottom border by Y-axis
     align-content: space-between; If more than 1 line of boxes, the 1st is on the top and the 2nd on the bottom
+    
     flex-wrap: wrap;
     align-content: flex-start;
     column-gap: 1em; Adds a gap of 1em between the columns
     row-gap: 1em; Adds a gap of 1em between the rows
-    Now we deleted previous extra 4 boxes.
+    Now we deleted previous 4 extra boxes.
     */
 }
-/*Transformations in CSS*/
+/*Transformations in CSS. Can be applied to images too*/
+#boxt1 {    
+    background-color: hsl(117, 47%, 48%);
+    /*Multiple values can be applied by one "transform" line
+    transform: translateX(50%); Moves the box on the X-axis by 50px to the right. Negative - to the left. Percents (the width of the box, not the display) can be also used
+    transform: translateY(90px); same as "translateX" but for the Y-
+    transform: translate(40px, 140px); Moves by the X-axis and Y-axis (two values needed)
+    transform: rotateX(45deg); Rotated (flipping around the X-axis) by 45 degrees on the X-axis 
+    transform: rotateY(45deg); Rotated (flipping around the Y-axis) by 45 degrees on the X-axis 
+    transform: rotateZ(45deg); Rotated by 45 degrees (flipping around the Z-axis)
+    transform: scaleX(2); Enlarges the width on X-axis by 200%
+    transform: scaleY(0.5); Decreases the height on Y-axis by 50%
+    transform: scale(0.5, 1.5); For both axises
+    transform: skewX(45deg); Tilts the box to the 45 degrees by the X-axis;
+    transform: skewY(30deg); same as the X-axis but for the Y-axis
+    transform: skew(20deg, 35deg); for both
+    transform: translateX(100%) rotateZ(90deg) scale(0.5);
+    */
+}
+#boxt2 {    
+    background-color: hsl(0, 47%, 48%);
+}
+#boxt3 {    
+    background-color: hsl(234, 47%, 48%);
+}
+.transformations {
+    width: 250px;
+    height: 250px;
+    border: 5px solid;
+    font-size: 13em;
+    text-align: center;
+    transform: translateX(100px) rotateZ(45deg) scale(0.5);
+}
+/*Animations in CSS (can be applied to images too)*/
+#anbox {
+    width: 250px;
+    height: 250px;
+    background-color: hsl(0, 87%, 44%);
+    font-size: 13em;
+    text-align: center;
+    /*Set the name of animation we specified later on
+    animation-name: slideLeft;
+    animation-name: slideRight;
+    animation-name: slideUp;
+    animation-name: slideDown;
+    animation-name: rotate;
+    animation-name: grow;
+    animation-name: shrink;
+    animation-name: fade;
+    opacity: 0; If we want to fade in, set it initially as 0
+    animation-name: fade-in;
+    animation-name: colourChange;
+    animation-iteration-count: 2; How many times the animation's performed. For constant animation the value is "infinite"
+    animation-direction: normal; Default value
+    animation-direction: reverse;
+    animation-direction: alternate; First perfoms as "normal", then as "reverse"
+    animation-direction: alternate-reverse; Reverse of "alternate"
+    animation-play-state: paused; Pause it
+    animation-play-state: running; Active state
+    animation-timing-function: ease-in-out; Speed default value. By opening the inspector tab in browser you can click on the icon for this line and change the timing function. The new value can be copied and pasted instead of the current one
+    animation-timing-function: linear; Constant speed (no acceleration throughout the whole duration)
+    animation-timing-function: steps(5); For slow motion effects. The animation will be performed in 5 stopped states*/
+    animation-name: glow;
+    animation-duration: 10s;
+}
+/*Animations can be applied while the box is being hovered over ("hover" pseudo-class), clicked on ("active" pseudo-class), etc.
+#anbox:hover {
+    animation-name: glow;
+    animation-duration: 10s;
+}*/
+@keyframes slideLeft { /*Keyframe rule to create an animation with the rule name of ours*/
+    from{transform: translateX(90%)} /*"from" means from the right to the current left position*/
+}
+@keyframes slideRight {
+    to{transform: translateX(240px)} /*"to" means to the right from the current left position*/
+}
+@keyframes slideUp {
+    from{transform: translateY(200px)} /*"from" means from the bottom to the current top position*/
+}
+@keyframes slideDown {
+    to{transform: translateY(110%)} /*"to" means to the bottom from the current top position*/
+}
+@keyframes rotate {
+    40%{transform: rotateX(90deg)} /*40% means that the animation will be fully performed by 40% of its duration and for the rest 60% of the remaning time it will get to the initial position*/
+}
+@keyframes grow {
+    50%{transform: scale(2, 2)}
+}
+@keyframes shrink {
+    50%{transform: scale(50%, 50%)}
+}
+@keyframes fade {
+    70%{opacity: 0};
+}
+@keyframes fade-in {
+    60%{opacity: 1};
+}
+@keyframes colourChange { /*In this example we change the colour every 20% of the animation duration*/
+    0%{background-color: hsl(0, 87%, 44%)}
+    20%{background-color: hsl(60, 87%, 55%)}
+    40%{background-color: hsl(126, 87%, 44%)}
+    60%{background-color: hsl(199, 87%, 44%)}
+    80%{background-color: hsl(238, 87%, 44%)}
+    100%{background-color: hsl(306, 87%, 44%)}
+}
+@keyframes glow {
+    65%{box-shadow: 0px 0px 50px yellow}
+}
