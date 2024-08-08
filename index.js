@@ -214,3 +214,310 @@ myButton.onclick = function() { //Already assigned "myButton" earlier
     randNum = Math.trunc(Math.random() * maxDice) + minDice;
     myLabel.textContent = randNum;
 }
+//IF STATEMENTS
+//For if statements "and" is used as "&&", "or" is used as "||"
+/*
+let time = 14;
+if (time < 12) {
+    console.log("Good morning");
+}
+else {
+    console.log("Good afternoon!")
+}
+
+let isStudent = false;
+if (isStudent) {
+    console.log("You are a stundent");
+}
+else {
+    console.log("You ain't a student");
+}
+
+let hasLicence=false;
+if (age>=16) {
+    console.log("You're old enough to drive");
+    if(hasLicence){
+        console.log("You have your licence");
+    }
+    else {
+        console.log("You do not have your licence yet");
+    }
+}
+else {
+    console.log("You have to be 16+ to gave a licence");
+}
+*/
+const myText1 = document.getElementById("myText1");
+const mySubmit1 = document.getElementById("mySubmit1");
+const resultElement = document.getElementById("resultElement");
+let age;
+
+mySubmit1.onclick = function() {
+    age = Number(myText1.value); //Already declared myText1 constant above. Text will be converted into number before comparisons
+    if(age >= 18) { //If it's true, the rest "else" statements will be skipped
+        resultElement.textContent="You're old enough to enter this site";
+    }
+    else if (age < 0) {
+        resultElement.textContent="Your age can't be below 0";
+    }
+    else if (age == 0) { //Comparison is used with "=="
+        resultElement.textContent="You can't enter. You were just born";
+    }
+    else if (age >=100) { //Will be skipped because it works for the first "if" statement with >=18
+        resultElement.textContent="You're too old to enter this site";
+    }
+    else {
+        resultElement.textContent="You must be 18+ to enter this site";
+    }
+    //In this case it's better to check if age is >=100 first, then the other statements
+}
+//CHECKED PROPERTY
+//.checked is property that determines the checked state of an HTML checkbox or radio button element
+const myCheckBox = document.getElementById("myCheckBox");
+const visaButton = document.getElementById("visaButton");
+const masterCardButton = document.getElementById("masterCardButton");
+const payPalButton = document.getElementById("payPalButton");
+const submit2 = document.getElementById("submit2");
+const subResult = document.getElementById("subResult");
+const paymentResult = document.getElementById("paymentResult");
+
+submit2.onclick = function () {
+    if (myCheckBox.checked) {
+        subResult.textContent = "You are subscribed";
+    }
+    else {
+        subResult.textContent = "You are not subscribed";
+    }
+
+    if (visaButton.checked) {
+        paymentResult.textContent = "Your payment method is Visa";
+    }
+    else if (masterCardButton.checked) {
+        paymentResult.textContent = "Your payment method is MasterCard";
+    }
+    else if (payPalButton.checked) {
+        paymentResult.textContent = "Your payment method is PayPal";
+    }
+    else {
+        paymentResult.textContent = "You must select a payment method";
+    }
+}
+//TERNARY OPERATOR "?"
+//Ternary operator is a shortcut to if() and else() statements, which helps to assign a variable based on a condition:
+//condition ? codeIfTrue : codeIfFalse;
+let a = 22;
+let message = a >= 18 ? "You're an adult" : "You're a minor";
+console.log(message);
+
+let time = 16;
+let greeting = time < 12 ? "Good morning!" : "Good afternoon!";
+console.log(greeting);
+
+let hungry = true;
+let state = hungry ? "I'm hungry" : "I'm not hungry"; //With booleans we just use its variable
+console.log(state);
+
+let purchaseAmount = 125;
+let discount = purchaseAmount >= 100 ? purchaseAmount*0.9 : purchaseAmount;
+console.log(discount);
+//SWITCHES
+//An efficient replacement to many "if"/"else" statements
+let day = 1;
+
+switch(day) {
+    case 1:
+        console.log("It is Monday");
+        break; //helps to get out of the switch, otherwise next cases will be executed
+    case 2:
+        console.log("It is Tuesday");
+        break;
+    case 3:
+        console.log("It is Wednesday");
+        break;
+    case 4:
+        console.log("It is Thursday");
+        break;
+    case 5:
+        console.log("It is Friday");
+        break;
+    case 6:
+        console.log("It is Saturday");
+        break;
+    case 7:
+        console.log("It is Sunday");
+        break;
+    default: //If there're no matches with cases
+        console.log(`${day} is not a day`);
+}
+
+let testScore = 94;
+let letterGrade;
+
+switch(true) { //"true" means that the case will be executed, if the statement is true, otherwise will be skipped
+    case testScore >= 90:
+        letterGrade = "A";
+        break;
+    case testScore >= 80:
+        letterGrade = "B";
+        break;
+    case testScore >= 70:
+        letterGrade = "C";
+        break;
+    case testScore >= 60:
+        letterGrade = "D";
+        break;
+    default:
+        letterGrade = "F";
+}
+console.log(letterGrade);
+//STRING METHODS
+let userName = "   sleeplessglory";
+
+console.log(userName.charAt(0)); //.charAt() returns the specified character of a string, starting with 0 (like arrays) for the 1st letter
+console.log(userName.indexOf("o")); //indexOf() returns the index of the specified character
+console.log(userName.lastIndexOf("s")); //lastIndexOf() returns the index of the last time where character was found
+console.log(userName.length); //Just the length of the variable
+console.log(userName.trim()); //Trims white spaces from the beginning and the end of a string
+console.log(userName.toUpperCase()); //All letters will be capitalised
+console.log(userName.toLowerCase()); //The reverse
+console.log(userName.repeat(2)); //.repeat() repeats the string by the specified amount of time
+console.log(userName.startsWith("7")); //.startsWith() returns the boolean value, whether the string starts with "7" or not
+console.log(userName.endsWith("y")); //.endsWith() returns the boolean value, whether the string ends with "y" or not
+console.log(userName.includes("less")); //.includes() returns the boolean value, whether the string includes the specified sequence of characters or not
+
+let phoneNumber = "8-800-555-35-35";
+phoneNumber = phoneNumber.replaceAll("-", ""); //.replaceAll("-", "") replaces the "-" characters with "" characters in the string
+console.log(phoneNumber);
+phoneNumber = phoneNumber.padStart(15, "0"); //.padStart(15, "0") sets 15 characters for the string to end up with and "0" will be added to the beginning to have these 15 characters eventually
+console.log(phoneNumber);
+phoneNumber = phoneNumber.padEnd(17, "0"); //.padEnd() will do the same but at the end of the string
+console.log(phoneNumber);
+//STRING SLICING
+//Creating a substring out of another with .slice(starting index, ending index+1)
+const fullName = "sleepless glory";
+let firstName = fullName.slice(0, 9); //Despite "s" has index 8, we have to write 9, since the last index is exclusive for this method
+console.log(firstName);
+let lastName = fullName.slice(10, 15); //This time you can use just .slice(10), if you want it till the end
+console.log(lastName);
+let lastChar = fullName.slice(-1); //Starts from the end. -1 is for the last character, -5 will return the last 5 characters
+console.log(lastChar);
+//A better way is to find when " " is met:
+firstName = fullName.slice(0, fullName.indexOf(" "));
+lastName = fullName.slice(fullName.indexOf(" ")+1);
+console.log(firstName);
+console.log(lastName);
+
+const email = "sleeplessglory@outlook.com";
+let userName1 = email.slice(0, email.indexOf("@"));
+console.log(userName1);
+let extension = email.slice(email.indexOf("@")+1);
+console.log(extension);
+//METHOD CHAINING
+//Call one method after another in one continuous line
+//let userName2 = window.prompt("Enter your username:");
+//No method chaining:
+/*
+userName2 = userName2.trim();
+let letter = userName2.charAt(0);
+letter = letter.toUpperCase();
+
+let extraChars = userName2.slice(1);
+extraChars = extraChars.toLowerCase();
+userName2 = letter + extraChars;
+console.log(userName2);
+*/
+//Method chaining:
+//userName2 = userName2.trim().charAt(0).toUpperCase() + userName2.trim().slice(1).toLowerCase();
+//console.log(userName2);
+//LOGICAL OPERATORS
+//"and" is "&&", "or" is "||", "not" is "!"
+const temp = 20;
+if(temp > 0 && temp <= 30) {
+    console.log("The weather is good");
+}
+else {
+    console.log("The weather is bad");
+}
+
+if(temp <= 0 || temp > 30) {
+    console.log("The weather is bad");
+}
+else {
+    console.log("The weather is good");
+}
+
+const isSunny = true;
+if(!isSunny){
+    console.log("It's cloudy");
+}
+else {
+    console.log("It's sunny");
+}
+//STRICT EQUALITY
+// "=" is assignment operator
+// "==" is comparison operator
+// "===" is strict equality operator (compare whether values & datatypes are equal)
+// "!=" is inequality operator
+// "!==" is strict inequality operator
+const e = 2.7;
+
+if(e == "2.7") { //with "===" the else statement would be executed, because of different datatypes
+    console.log("That is e");
+} 
+else {
+    console.log("That is not e");
+}
+
+if(e != "2.7") {
+    console.log("That is not e");
+}
+
+if(e !== "2.7") { //checking the value & datatype as well
+    console.log("That is not e");
+}
+//WHILE LOOPS
+/*
+let userName3 = "";
+
+while(userName3 === "" || userName3 === null) {
+    userName3 = window.prompt("What's your username?");
+}
+
+do { //the same variation as above, but now we're able not to assign the initial userName3
+    userName3 = window.prompt("What's your username?");
+} while(userName3 === "" || userName3 === null)
+console.log(userName3);
+
+let loggedIn = false;
+let userName4;
+let password;
+
+while(!loggedIn) {
+    userName4 = window.prompt("Enter your username: ");
+    password = window.prompt("Enter your password: ");
+    if (userName4 === "myUsername" && password == "myPassword") {
+        loggedIn = true;
+        console.log("You're logged in");
+    }
+    else {
+        console.log("Invalid credentials! Please, try again");
+    }
+}
+*/
+//FOR LOOPS
+/*
+for(let i = 0; i <= 2; i++) {
+    console.log(i);
+}
+
+for(let i=20; i>=0; i-=2) {
+    if(i == 14){
+        continue; //will skip this "i" and go to the next iteration
+    }
+    if (i == 12) {
+        break; //gets out of the loop without the remaining iterations
+    }
+    console.log(i); //Results: 20, 18, 16
+}
+*/
+//
