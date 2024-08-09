@@ -5,11 +5,10 @@ console.log(`I like pizza!`);
 
 window.alert(`This is an alert!`); //Alert window from above
 window.alert(`I like pizza`); //This alert will be shown after closing the previous one (by users)
-*/
 
 document.getElementById("myH1").textContent = `Hello`; //pasting text in <h1>
 document.getElementById("myP").textContent = `I like pizza`;
-
+*/
 //VARIABLES
 //Numbers
 /*
@@ -102,7 +101,7 @@ console.log(y, typeof y); //pizza (string)
 console.log(z, typeof z); //true (boolean), as long as "z" is not empty
 */
 //CONSTANTS
-
+/*
 const PI = 3.14159; //declaring it as a constant won't let change it later on. Only const numbers and booleans have capitalised const names, not strings 
 let radius;
 let circumference;
@@ -120,8 +119,9 @@ document.getElementById("submit").onclick = function() {
     circumference = 2 * PI * radius;
     document.getElementById("circumference").textContent = `Circumference is ${circumference}`+" cm";
 }
-
+*/
 //COUNTER PROGRAM
+/*
 const decreaseButton = document.getElementById("decreaseButton"); //Already assigned with "document.getEl...". Won't need to type it again while calling the function() below
 const resetButton = document.getElementById("resetButton"); //Same as above
 const increaseButton = document.getElementById("increaseButton"); //Same as above
@@ -140,6 +140,7 @@ decreaseButton.onclick = function() {
     count--;
     countLabel.textContent = count;
 }
+*/
 //MATH OBJECT
 /*
 let x = 4.5;
@@ -195,6 +196,7 @@ let min = Math.min(x, y, z); //minimum
 console.log(min);
 */
 //RANDOM NUMBER GENERATOR
+/*
 const min = 50;
 const max = 100;
 //By default random() will get the number between 0 and 1: interval (0; 1). So, to set it between 20 and 30, interval (0; 1) will be * (30-20) = (0; 10) and also + 20 to each side is = (20; 30)
@@ -214,6 +216,7 @@ myButton.onclick = function() { //Already assigned "myButton" earlier
     randNum = Math.trunc(Math.random() * maxDice) + minDice;
     myLabel.textContent = randNum;
 }
+*/
 //IF STATEMENTS
 //For if statements "and" is used as "&&", "or" is used as "||"
 /*
@@ -247,6 +250,7 @@ else {
     console.log("You have to be 16+ to gave a licence");
 }
 */
+/*
 const myText1 = document.getElementById("myText1");
 const mySubmit1 = document.getElementById("mySubmit1");
 const resultElement = document.getElementById("resultElement");
@@ -271,8 +275,10 @@ mySubmit1.onclick = function() {
     }
     //In this case it's better to check if age is >=100 first, then the other statements
 }
+*/
 //CHECKED PROPERTY
 //.checked is property that determines the checked state of an HTML checkbox or radio button element
+/*
 const myCheckBox = document.getElementById("myCheckBox");
 const visaButton = document.getElementById("visaButton");
 const masterCardButton = document.getElementById("masterCardButton");
@@ -302,9 +308,11 @@ submit2.onclick = function () {
         paymentResult.textContent = "You must select a payment method";
     }
 }
+*/
 //TERNARY OPERATOR "?"
 //Ternary operator is a shortcut to if() and else() statements, which helps to assign a variable based on a condition:
 //condition ? codeIfTrue : codeIfFalse;
+/*
 let a = 22;
 let message = a >= 18 ? "You're an adult" : "You're a minor";
 console.log(message);
@@ -320,8 +328,10 @@ console.log(state);
 let purchaseAmount = 125;
 let discount = purchaseAmount >= 100 ? purchaseAmount*0.9 : purchaseAmount;
 console.log(discount);
+*/
 //SWITCHES
 //An efficient replacement to many "if"/"else" statements
+/*
 let day = 1;
 
 switch(day) {
@@ -370,13 +380,15 @@ switch(true) { //"true" means that the case will be executed, if the statement i
         letterGrade = "F";
 }
 console.log(letterGrade);
+*/
 //STRING METHODS
+/*
 let userName = "   sleeplessglory";
 
-console.log(userName.charAt(0)); //.charAt() returns the specified character of a string, starting with 0 (like arrays) for the 1st letter
-console.log(userName.indexOf("o")); //indexOf() returns the index of the specified character
-console.log(userName.lastIndexOf("s")); //lastIndexOf() returns the index of the last time where character was found
-console.log(userName.length); //Just the length of the variable
+console.log(userName.charAt(0)); //.charAt() returns the character of specified index of a string. Starts with index "0" (like arrays) for the 1st letter
+console.log(userName.indexOf("o")); //indexOf() returns the index of the specified character that was detected for the 1st time
+console.log(userName.lastIndexOf("s")); //lastIndexOf() returns the index of the last time where character was detected
+console.log(userName.length); //Just the length property of the variable
 console.log(userName.trim()); //Trims white spaces from the beginning and the end of a string
 console.log(userName.toUpperCase()); //All letters will be capitalised
 console.log(userName.toLowerCase()); //The reverse
@@ -390,10 +402,12 @@ phoneNumber = phoneNumber.replaceAll("-", ""); //.replaceAll("-", "") replaces t
 console.log(phoneNumber);
 phoneNumber = phoneNumber.padStart(15, "0"); //.padStart(15, "0") sets 15 characters for the string to end up with and "0" will be added to the beginning to have these 15 characters eventually
 console.log(phoneNumber);
-phoneNumber = phoneNumber.padEnd(17, "0"); //.padEnd() will do the same but at the end of the string
+phoneNumber = phoneNumber.padEnd(17, "0"); //.padEnd(17, "0") will do the same but at the end of the string
 console.log(phoneNumber);
+*/
 //STRING SLICING
 //Creating a substring out of another with .slice(starting index, ending index+1)
+/*
 const fullName = "sleepless glory";
 let firstName = fullName.slice(0, 9); //Despite "s" has index 8, we have to write 9, since the last index is exclusive for this method
 console.log(firstName);
@@ -412,6 +426,7 @@ let userName1 = email.slice(0, email.indexOf("@"));
 console.log(userName1);
 let extension = email.slice(email.indexOf("@")+1);
 console.log(extension);
+*/
 //METHOD CHAINING
 //Call one method after another in one continuous line
 //let userName2 = window.prompt("Enter your username:");
@@ -431,6 +446,7 @@ console.log(userName2);
 //console.log(userName2);
 //LOGICAL OPERATORS
 //"and" is "&&", "or" is "||", "not" is "!"
+/*
 const temp = 20;
 if(temp > 0 && temp <= 30) {
     console.log("The weather is good");
@@ -453,15 +469,17 @@ if(!isSunny){
 else {
     console.log("It's sunny");
 }
+*/
 //STRICT EQUALITY
 // "=" is assignment operator
 // "==" is comparison operator
-// "===" is strict equality operator (compare whether values & datatypes are equal)
+// "===" is strict equality operator (compare whether values & data types are equal)
 // "!=" is inequality operator
 // "!==" is strict inequality operator
+/*
 const e = 2.7;
 
-if(e == "2.7") { //with "===" the else statement would be executed, because of different datatypes
+if(e == "2.7") { //with "===" the else statement would be executed, because of different data types
     console.log("That is e");
 } 
 else {
@@ -472,9 +490,10 @@ if(e != "2.7") {
     console.log("That is not e");
 }
 
-if(e !== "2.7") { //checking the value & datatype as well
+if(e !== "2.7") { //checking the value & data type as well
     console.log("That is not e");
 }
+*/
 //WHILE LOOPS
 /*
 let userName3 = "";
@@ -520,4 +539,221 @@ for(let i=20; i>=0; i-=2) {
     console.log(i); //Results: 20, 18, 16
 }
 */
-//
+//NUMBER GUESSING GAME
+/*
+const minNum = 50;
+const maxNum = 100;
+const answer = Math.trunc(Math.random()*(maxNum - minNum + 1)) + minNum;
+
+let attempts = 0;
+let guess;
+let running = true;
+
+while (running) {
+    guess = window.prompt(`Guess a number between ${minNum} - ${maxNum}`);
+    guess = Number(guess);
+    if (isNaN(guess)){ //isNan() is a method that checks whether the variable has a number data type or not
+        window.alert("Enter a valid number");
+    }
+    else if(guess < minNum || guess > maxNum) {
+        window.alert("Enter a valid number");
+    }
+    else {
+        attempts++;
+        if(guess < answer){
+            window.alert("Too low. Try again");
+        }
+        else if(guess > answer){
+            window.alert("Too high. Try again");
+        }
+        else {
+            window.alert(`Correct! The answer was ${answer}. It took you ${attempts} attempts!`);
+            running = false;
+        }
+    }
+}
+*/
+//FUNCTIONS
+/*
+function happyBirthday(userName5, age) { //function with parameters to be received
+    console.log("Happy birthday to you!");
+    console.log("Happy birthday to you!");
+    console.log(`Happy birthday, dear ${userName5}!`);
+    console.log(`You're ${age} years old!`);
+}
+happyBirthday("sleeplessglory", "22"); //Calling the function and passing it specific arguments to be used within
+happyBirthday("Alex", "20");
+
+function add(x, y) {
+    let result = x + y;
+    return result;
+}
+console.log(add(2, 3));
+
+function isEven(number1) {
+    if(number1 % 2 === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    //another way is to use ternary operator again: 
+    //return number1 % 2 === 0 ? true : false
+}
+console.log(isEven(10));
+
+function isValidEmail(email) {
+    if(email.includes("@")){
+        return true;
+    }
+    else {
+        return false;
+    }
+    //another way is to use ternary operator again: 
+    //return email.includes("@") ? true : false
+}
+console.log(isValidEmail("sleeplessglory@outlook.com"));
+*/
+//VARIABLE SCOPE
+//A place where a variable is recognised and accessible (local or global)
+/*
+let g = 4; //global scrope (outside of a function)
+function f1(){
+    let l = 1; //"l" is local within f1(), hence, it can be declared again within another f()
+    console.log(l); //if "l" was global as well, the result would be the local value
+    console.log(g); //global variable can be accessed by functions
+}
+function f2(){ //f2() can't get access to "l" within f1() and vice versa
+    let l = 2; //local scope
+    console.log(l);
+    console.log(g);
+}
+*/
+//TEMPERATURE CONVERSION PROGRAM
+/*
+const textBox = document.getElementById("textBox");
+const toFahrenheit = document.getElementById("toFahrenheit");
+const toCelsius = document.getElementById("toCelsius");
+const result = document.getElementById("result");
+let temp;
+
+function convert() { //in HTML file for the line of "Submit" button specify an attribute "onclick" with value "convert()" in order to execute whis function 
+    if(toFahrenheit.checked) {
+        temp=Number(textBox.value);
+        temp=temp*9/5+32; //conversion formula
+        result.textContent=temp.toFixed(1) + "°F"; //.toFixed(1) gives us additional 1 digit for more precision
+    }
+    else if(toCelsius.checked) {
+        temp=Number(textBox.value);
+        temp=(temp-32)*(5/9); //conversion formula
+        result.textContent=temp.toFixed(1) + "°F"; //.toFixed(1) gives us additional 1 digit for more precision
+    }
+    else {
+        result.textContent = "Select a unit";
+    }
+}
+*/
+//ARRAYS
+/*
+let fruits = ["apple", "orange", "banana"]; //indexing from 0
+
+fruits.push("coconut"); //.push() adds the next element to the end of an array
+fruits.pop(); //.pop() removes the last element of an array;
+fruits.unshift("mango"); //.unshift() adds the specified element to the beginning of an array
+fruits.shift(); //.shift() removes the first element of an array;
+
+console.log(fruits.length); //the length (amount of elements) of an array
+console.log(fruits.indexOf("apple")); //defining the index of the specified element, same as for strings
+//in case the .indexOf() returns "-1", that means that the specified element does not exist in an array
+for (let i=0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+//or there's a simple way:
+for (let fruit of fruits) {
+    console.log(fruit); //"fruit" is chosen instead of "i", could be anything
+}
+
+fruits.sort(); //sort the elements alphabetically
+fruits.sort().reverse(); //sort the elements in a reverse alphabetical way
+*/
+//SPREAD OPERATOR "..."
+//Allows an iterable (array, string) to be expanded into separate elements (unpacks the elements)
+/*
+let numbers = [1, 2, 3, 4, 5];
+let maximum = Math.max(numbers); //result will be "NaN", since it's an array
+let maxNum = Math.max(...numbers); //now we allowed to spread (unpack) the array into different elements
+let minNum = Math.min(...numbers);
+console.log(maxNum, minNum);
+
+let trackTitle = "Various Storms & Saints";
+let letters = [...trackTitle]; //created an array and spread the string into it
+console.log(letters); //['V', 'a', 'r', 'i', 'o', 'u', 's', ' ', 'S', 't', 'o', 'r', 'm', 's', ' ', '&', ' ', 'S', 'a', 'i', 'n', 't', 's'] is the result
+letters = [...trackTitle].join("-"); //.join() adds the specified character(s) to the unpacked version of a string within an array
+console.log(letters); //V-a-r-i-o-u-s- -S-t-o-r-m-s- -&- -S-a-i-n-t-s (not an array)
+
+//off the previous exercise let's use the fruits array
+let newFruits = [...fruits]; //a copy array containing the same values
+let vegetables = ["carrots", "tomatoes", "potatoes"];
+let foods = [...fruits, ...vegetables, "eggs", "milk"]; //we can add 2 arrays with spread operator for a new one and also write new elements too
+
+console.log(foods);
+*/
+//REST OPERATOR (PARAMETERS) "..."
+//Allows a function work with a variable number of arguments by bundling them into an array
+//'spread' expands an array into separate elements
+//'rest' bundles separated elements into an array
+const food1 = "pizza";
+const food2 = "hamburger";
+const food3 = "hotdog";
+const food4 = "sushi";
+const food5 = "ramen";
+
+function openFridge(...foods) { //rest parameters (...foods) allows to accept any number of arguments
+    console.log(...foods); //spread parameters (a string is shown) unpacked the array
+}
+openFridge(food1, food2, food3, food4, food5);
+
+function getFood(...foods) { //rest parameters are bundled as an array now
+    console.log(foods); //shows an array
+}
+getFood(food1, food2, food3, food4, food5);
+
+function sum(...numbers) {
+    let result = 0;
+    for (let number of numbers){
+        result += number;
+    }
+    console.log(`Your total is $${result}`);
+}
+sum(4, 7, 11);
+
+function getAverage(...numbers) {
+    let result = 0;
+    for (let number of numbers){
+        result += number;
+    }
+    console.log(`Your total is $${result/numbers.length}`);
+}
+getAverage(11, 11, 11);
+
+function combineStrings(...strings){ //bundled as an array
+    return strings.join(" ") //.join(" ") will add strings together with " " in between them (a string will be returned)
+}
+const fullName = combineStrings("Florence", "+", "The", "Machine");
+console.log(fullName);
+//DICE ROLLER PROGRAM
+function rollDice() {
+    const amountOfDice = document.getElementById("amountOfDice").value;
+    const diceResult = document.getElementById("diceResult");
+    const diceImages = document.getElementById("diceImages");
+    const values = []; //the values of each dice
+    const images = []; //to be shown accordingly
+
+    for (let i=0; i < amountOfDice; i++) {
+        let value = Math.trunc(Math.random() * 6 + 1);
+        values.push(value);
+        images.push(`<img src="images/${value}.png" alt="Dice ${value}">`); //let's call dice images accordingly. Couldn't find those images currently. So, alt names are shown instead
+    }
+    diceResult.textContent = `Dice: ${values.join(", ")}`;
+    diceImages.innerHTML = images.join("");
+}

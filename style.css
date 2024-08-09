@@ -120,7 +120,7 @@ https://fonts.google.com for choosing fonts to connect via API or dowload and us
 /*Fonts in CSS*/
 #title-header { /* "#" used for IDs */
     font-family: Playwrite-DK-Loopet,Verdana, Arial; /*If the 1st font can't be displayed, the 2nd will be chosen instead*/
-    font-size: 2em; /*1em = 100% or use pixels*/
+    font-size: 2em; /*1em = 100% or use pixels. "em" is relative to the parent, "rem" is for the root*/
 }
 .author {
     font-family: Roboto-Slab, "Times New Roman", Georgia;
@@ -748,4 +748,68 @@ Counter program*/
 /*Checked property*/
 #submit2 {
     font-size: 1em;
+}
+/*Temperature conversion program*/
+#tempconvdiv {
+    background-color: hsl(0, 0%, 94%);
+    font-family: Arial, sans-serif;
+}
+#temph1 {
+    color: hsl(238, 88%, 33%);
+}
+#tempform {
+    background-color: white;
+    text-align: center;
+    max-width: 300px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px hsla(240, 86%, 20%, 0.3);
+}
+#textBox {
+    width: 50%;
+    text-align: center;
+    font-size: 2em;
+    border: 2px solid hsla(0, 0%, 0%, 0.8);
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.temp {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+/*Dice roller program*/
+#dice-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+#rollButton {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: hsl(240, 74%, 30%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+#rollButton:hover {
+    background-color: hsl(240, 74%, 40%);
+}
+#rollButton:active {
+    background-color: hsl(240, 74%, 50%);
+}
+#amountOfDice {
+    font-size: 2rem;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+#diceResult {
+    margin: 25px;
+}
+#diceImages img {
+    width: 150px;
 }
