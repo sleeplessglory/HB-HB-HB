@@ -684,7 +684,7 @@ article {
     to{transform: translateY(110%)} /*"to" means to the bottom from the current top position*/
 }
 @keyframes rotate {
-    40%{transform: rotateX(90deg)} /*40% means that the animation will be fully performed by 40% of its duration and for the rest 60% of the remaning time it will get to the initial position*/
+    40%{transform: rotateX(90deg)} /*40% means that the animation will be fully performed by 40% of its duration and for the rest 60% of the remaning time it will get back to the initial position*/
 }
 @keyframes grow {
     50%{transform: scale(2, 2)}

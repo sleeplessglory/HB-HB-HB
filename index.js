@@ -702,6 +702,7 @@ console.log(foods);
 //Allows a function work with a variable number of arguments by bundling them into an array
 //'spread' expands an array into separate elements
 //'rest' bundles separated elements into an array
+/*
 const food1 = "pizza";
 const food2 = "hamburger";
 const food3 = "hotdog";
@@ -741,6 +742,7 @@ function combineStrings(...strings){ //bundled as an array
 }
 const fullName = combineStrings("Florence", "+", "The", "Machine");
 console.log(fullName);
+*/
 //DICE ROLLER PROGRAM
 function rollDice() {
     const amountOfDice = document.getElementById("amountOfDice").value;
@@ -756,4 +758,148 @@ function rollDice() {
     }
     diceResult.textContent = `Dice: ${values.join(", ")}`;
     diceImages.innerHTML = images.join("");
+}
+//RANDOM PASSWORD GENERATOR
+/*
+const passwordLength = 22;
+const includeLowerCase = true;
+const includeUpperCase = true;
+const includeNumbers = true;
+const includeSymbols = true;
+
+function generatePassword(length, includeLowerCase, includeUpperCase, includeNumbers, includeSymbols) {
+    const lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
+    const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numberChars = "0123456789";
+    const symbolChars = "!@#$%^&*()_+-=\|/<>?'`;:,.{}[]~";
+
+    let allowedChars = "";
+    let password = "";
+    allowedChars += includeLowerCase ? lowerCaseChars : "";
+    allowedChars += includeUpperCase ? upperCaseChars : "";
+    allowedChars += includeNumbers ? numberChars : "";
+    allowedChars += includeSymbols ? symbolChars : "";
+
+    if(length <= 0) {
+        return "Password length must be at least 1";
+    }
+    else if(allowedChars.length === 0) {
+        return "At least 1 set of character needs to be selected";
+    }
+    else {
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.trunc(Math.random() * allowedChars.length);
+            password += allowedChars[randomIndex];
+        }
+        return password;
+    }
+}
+
+const password = generatePassword (passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSymbols);
+console.log(`Generated password: ${password}`);
+*/
+//CALLBACKS
+//Functions that are passed as an argument to another function (e.g. we want functions to be executed consequently)
+//JavaScript won't wait when one function is executed to go further
+//Used to handle asynchronous operations: reading a file, network requests, interacting with databases. So, another function ain't executed before these operations
+/*
+hello(wait);
+function hello(callback) {
+    console.log("Hello!");
+    callback(); //wait() is called now
+}
+
+function wait() {
+    console.log("Wait!");
+}
+
+
+function sum(callback, x, y) { //"callback" is specified as a parameter
+    let result = x + y;
+    callback(result); //passing the result to a callback function
+}
+sum(displayConsole, 1, 2); //"displayConsole" is a callback funtion specified without "()"
+
+function displayConsole(result) {
+    console.log(result);
+}
+
+function displayDOM(result){
+    document.getElementById("h1CallBack").textContent = result;
+}
+sum(displayDOM, 22, -48);
+*/
+//forEach() METHOD
+//Method used to iterate over the elements of an array and apply a specified function (callback) to each element
+//element, index and array are provided automatically
+/*
+let numbers = [1, 2, 3, 4, 5];
+
+function double(element, index, array) {
+    array[index] = element * 2;
+}
+
+function tripple(element, index, array) {
+    array[index] = element * 3;
+}
+
+function square(element, index, array) {
+    array[index] = Math.pow(element, 2);
+}
+
+function display(element) {
+    console.log(element);
+}
+
+numbers.forEach(double);
+numbers.forEach(tripple);
+numbers.forEach(square);
+
+numbers.forEach(display);
+
+let fruits = ["apple", "orange", "banana", "coconut"];
+
+fruits.forEach(capitalise);
+fruits.forEach(upperCase); //calls are executed consequently
+
+fruits.forEach(display);
+
+function capitalise(element, index, array) {
+    array[index] = element.charAt(0).toUpperCase()+element.slice(1);
+}
+
+function upperCase(element, index, array){
+    array[index] = element.toUpperCase();
+}
+*/
+//.map() METHOD
+//Accepts a callback and applies that function to each element of an array, then returns a new array (similar to .forEach(), but returns a new array)
+const numbers = [1, 2, 3, 4, 5];
+const squares = numbers.map(square);
+
+console.log(squares);
+
+function square(element) {
+    return Math.pow(element, 2);
+}
+
+
+const students = ["Florence", "Adele", "Stefani", "Elizabeth"];
+const studentsUpper = students.map(upperCase);
+
+console.log(studentsUpper);
+
+function upperCase(element) {
+    return element.toUpperCase();
+}
+
+
+const dates = ["2024-8-11", "2020-1-1", "2021-7-19"]; //Let's declare the date as YYYY-MM-DD
+const formatedDates = dates.map(formatDates);
+
+console.log(formatedDates);
+
+function formatDates (element) {
+    const parts = element.split("-"); //.split("-") splits an element where "-" is detected. Now the parts are: "2024", "8", "11", "2020", "1", "1", "2021", "7", "19"
+    return `${parts[2]}/${parts[1]}/${parts[0]}` //rearranging the date format as DD-MM-YYYY. Every index stands for its element within the initial array
 }
