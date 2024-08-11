@@ -829,7 +829,7 @@ function displayDOM(result){
 }
 sum(displayDOM, 22, -48);
 */
-//forEach() METHOD
+//.forEach() METHOD
 //Method used to iterate over the elements of an array and apply a specified function (callback) to each element
 //element, index and array are provided automatically
 /*
@@ -868,12 +868,13 @@ function capitalise(element, index, array) {
     array[index] = element.charAt(0).toUpperCase()+element.slice(1);
 }
 
-function upperCase(element, index, array){
+function upperCase(element, index, array) {
     array[index] = element.toUpperCase();
 }
 */
 //.map() METHOD
 //Accepts a callback and applies that function to each element of an array, then returns a new array (similar to .forEach(), but returns a new array)
+/*
 const numbers = [1, 2, 3, 4, 5];
 const squares = numbers.map(square);
 
@@ -901,5 +902,434 @@ console.log(formatedDates);
 
 function formatDates (element) {
     const parts = element.split("-"); //.split("-") splits an element where "-" is detected. Now the parts are: "2024", "8", "11", "2020", "1", "1", "2021", "7", "19"
-    return `${parts[2]}/${parts[1]}/${parts[0]}` //rearranging the date format as DD-MM-YYYY. Every index stands for its element within the initial array
+    //console.log(parts); "parts" now consists of many arrays. The 1st array is made out of the 1st element of the initial array: ["2024", "8", "11"]. The 2nd is made out of the 2nd, etc.
+    return `${parts[2]}/${parts[1]}/${parts[0]}` //rearranging the date format as DD-MM-YYYY. Every index stands for its element within each array of "parts" (commented above)
 }
+*/
+//.filter() METHOD
+//Creates a new array by filtering out elements (based on "true" or "false")
+/*
+let numbers = [1, 2, 3, 4, 5, 6, 7];
+let evenNums = numbers.filter(isEven);
+let oddNums = numbers.filter(isOdd);
+
+console.log(evenNums, oddNums);
+
+function isEven(element) { //callback function
+    return element % 2 === 0; //returning "true" or "false"
+}
+
+function isOdd(element) { //callback function
+    return element % 2 !== 0;
+}
+
+
+const ages = [16, 17, 18, 18, 19, 20, 60];
+const adults = ages.filter(isAdult);
+const minors = ages.filter(isMinor);
+
+console.log(adults, minors);
+
+function isAdult(element) { //callback function
+    return element >= 18;
+}
+
+function isMinor(element) {
+    return element < 18;
+}
+
+
+const words = ["apple", "orange", "banana", "kiwi", "pomegranate", "coconut"];
+const shortWords = words.filter(getShortWords);
+const longWords = words.filter(getLongWords);
+
+console.log(shortWords, longWords);
+
+function getShortWords(element) {
+    return element.length < 7;
+}
+
+function getLongWords(element) {
+    return element.length >= 7;
+}
+*/
+//.reduce() METHOD
+//Reduces the elements of an array to a single value
+/*
+const prices = [5, 30, 10, 25, 15, 20];
+
+const total = prices.reduce(sum);
+
+console.log(`$${total.toFixed(2)}`);
+
+function sum(previous, element) { //previous sum of elements and a current element
+    return previous + element; //this sum is a new "previous" element for the next pair of elements
+}
+
+
+const grades = [75, 50, 90, 80, 65, 95];
+const maximum = grades.reduce(getMax);
+
+console.log(maximum);
+
+function getMax(previous, element) { //"previous" can also be called "accumulator"
+    return Math.max(previous, element);
+}
+*/
+//FUNCTION EXPRESSIONS
+//A way to define functions as values or variables (not a function declaration)
+/*
+const hello = function() { //Assigning a function to a variable
+    console.log("Hello");
+}
+
+hello();
+
+setTimeout(hello, 3000); //hello() will be executed after 3000ms = 3s
+setTimeout(function(){ //An entire f() was passed as an argument (treated as a value)
+    console.log("Hey");
+}, 3000); //The end of arguments for setTimeout()
+
+
+const numbers = [1, 2, 3, 4, 5, 6];
+const squares1 = numbers.map(square1);
+
+console.log(squares1);
+
+function square1(element) { //This time it's a function declaration
+    return Math.pow(element, 2);
+}
+
+const squares2 = numbers.map(function(element) { //This time we used a function expression instead. No need to name a function then ('cause it's used just once)
+    return Math.pow(element, 2);
+});
+
+console.log(squares2);
+
+const cubes = numbers.map(function(element) {
+    return Math.pow(element, 3);
+});
+
+console.log(cubes);
+
+const evenNums = cubes.filter(function(element) {
+    return element % 2 === 0;
+});
+
+console.log(evenNums);
+
+const sumEvenNums = evenNums.reduce(function(accumulator, element) {
+    return accumulator + element;
+});
+
+console.log(sumEvenNums);
+*/
+//ARROW FUNCTIONS
+//A concise way to write function expressions. Good for simple functions that're only used once
+//(patameters) => {some code}
+/*
+const hello = function() { //function expression. Now there's a hello() function
+    console.log("Hello");
+}
+
+hello(); //function expression invoking (calling)
+
+const hello2 = (name, age) => {console.log(`Hello, ${name}!`) //if more than 1 line, then use "{ }" around
+                               console.log(`You're ${age} years old!`)}; //hello2() is an arrow function now
+
+hello2("sleeplessglory", 22); //arrow function invoking (calling it)
+
+
+setTimeout(() => console.log("Goodbye!"), 3000);
+
+
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const squares = numbers.map((element) => Math.pow(element, 2)); //We don't return those elements
+console.log(squares);
+
+const oddNums = numbers.filter((element) => element % 2 !== 0); //We don't return the elements back when using "=>"
+console.log(oddNums);
+
+const sum = numbers.reduce((accumulator, element) => accumulator + element);
+console.log(sum);
+*/
+//JAVASCRIPT OBJECTS
+//Collections of related properties and/or methods that can represent real world objects (people, products, places)
+// object = {key:value,   //properties
+//           function()}  //methods
+/*
+const person = { //an object ("const" is optional)
+    firstName: "Florence", //key: value,
+    lastName: "Welch",
+    age: 37,
+    isEmployed: true,
+    sayHello: function() {console.log("Hi! I'm Florence. I'm English. AHAHAHHA")}, //Do not use ";" in the end. Use "," for an object instead
+    sing: () => {console.log("Some things you let go in order to live. While all around you the buildings sway, You sing it out loud, Who made us this way?")}, //arrow functions can be applied too
+    eat: () => {console.log("I'm eating this salad now!")},
+}
+
+console.log(person.firstName); //access any property of the object
+console.log(person.lastName);
+console.log(person.age);
+person.sayHello(); //access any method of the object
+person.sing();
+person.eat();
+*/
+//THIS
+//"this" is a reference to the object where "this" is used. The object depends on the immediate context.
+//person.name = this.name
+/*
+const person = {
+    name: "Stefani",
+    favFood: "spaghetti",
+    sayHello: function(){console.log(`I'm ${this.name}`)}, //we use "this.name" (or can use "person.name"), otherwise it won't show it
+    eat: () => {console.log(`${person.name} is eating ${person.favFood}`)}, //"this." doesn't work with arrow functions. Use the function() itself or specify properties as "objectName." ("person.")
+}
+person.sayHello();
+person.eat();
+
+const person2 = {
+    name: "Martin",
+    favFood: "pizza",
+    sayHello: function(){console.log(`I'm ${this.name}`)}, //we use "this.name" (or can use "person.name"), otherwise it won't show it
+    eat: () => {console.log(`${person2.name} is eating ${person.favFood}`)}, //"this." doesn't work with arrow functions. Use the function() itself or specify properties as "objectName." ("person." this time)
+}
+person2.eat();
+*/
+//CONSTRUCTORS
+//Special method for defining the properties and methods of objects
+/*
+function Car(make, model, year, color) { //constructor names are capitalised (Car)
+    this.make = make,
+    this.model = model,
+    this.year = year,
+    this.color = color,
+    this.drive = function(){console.log(`You drive the ${this.model}`)}
+} //Car() is a constructor method (which is reusable)
+
+const car1 = new Car("Ford", "Mustang", 2024, "red");
+const car2 = new Car("Chevrolet", "Camaro", 2025, "blue");
+//we can add as many cars as we want with this constructor
+
+console.log(car1.make);
+console.log(car1.model);
+console.log(car1.year);
+console.log(car1.color);
+
+console.log(car2.make);
+console.log(car2.model);
+console.log(car2.year);
+console.log(car2.color);
+
+car1.drive();
+car2.drive();
+*/
+//CLASSES
+//(ES6 feature) provide a more structured and cleaner way to work with objects compared to traditional constructure functions
+// e.g. static keyword, encapsulation, inheritence
+/*
+class Products { //this class is reusable
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    displayProduct(){ //inside classes no need to use keywords for functions
+        console.log(`Product: ${this.name}`);
+        console.log(`Price: $${this.price.toFixed(2)}`); //.toFixed() method shows 2 digits in the decimal part
+    }
+    calculateTotal(salesTax){
+        return this.price + (this.price * salesTax);
+    }
+}
+
+const product1 = new Products("Shirt", 19.99); //creating an object
+const product2 = new Products("Pants", 22.50);
+const product3 = new Products("Underwear", 100);
+const salesTax = 0.05; //5%
+const total = product1.calculateTotal(salesTax); //for shirt
+
+product1.displayProduct();
+product2.displayProduct();
+product3.displayProduct();
+console.log(`Total price (with tax): $${total.toFixed(2)}`);
+*/
+//STATIC KEYWORD
+//Keyword that defines properties or methods that belong to a class itself rather than the objects created from that class (class owns anything static, not the objects)
+/*
+class MathUtil {
+    static PI = 3.14159; //no need to create an object to access this property
+    static getDiameter(radius) {
+        return radius*2;
+    }
+    static getCircumference(radius) {
+        return 2*this.PI*radius;
+    }
+    static getArea(radius) {
+        return this.PI*radius*radius;
+    }
+}
+
+console.log(MathUtil.PI);
+console.log(MathUtil.getDiameter(10));
+console.log(MathUtil.getCircumference(10));
+console.log(MathUtil.getArea(10));
+
+
+class User {
+    static userCount = 0;
+    constructor(username) {
+        this.username = username;
+        User.userCount++; //"userCount" is static and belongs to the class only
+    }
+    sayHello(){
+        console.log(`Hello, my username is ${this.username}`);
+    }
+    static getUserCount(){
+        console.log(`There are ${User.userCount} users online`);
+    }
+}
+
+const user1 = new User("Florence");
+const user2 = new User("Elizabeth");
+
+console.log(user1.username);
+console.log(user2.username);
+//console.log(user1.userCount); //won't be executed since "userCount" is static and belongs to the class only
+console.log(User.userCount); //now we can access userCount
+User.getUserCount();
+
+user1.sayHello();
+user2.sayHello();
+*/
+//INHERITANCE
+//Allows a new class to inherit properties and methods from an existing class (parent -> child)
+/*
+class Animal {
+    alive = true;
+    eat() {
+        console.log(`This ${this.name} is eating`);
+    }
+    sleep() {
+        console.log(`This ${this.name} is sleeping`);
+    }
+}
+class Rabbit extends Animal { //"extends" sets a relationship that "Animal" is a parent for a "Rabbit" (child)
+    name = "rabbit";
+    run() {
+        console.log(`This ${this.name} is running`);
+    }
+}
+class Fish extends Animal {
+    name = "fish";
+    swim() {
+        console.log(`This ${this.name} is swimming`);
+    }
+}
+class Hawk extends Animal {
+    name = "hawk";
+    fly() {
+        console.log(`This ${this.name} is flyng`);
+    }
+}
+
+const rabbit = new Rabbit();
+const fish = new Fish();
+const hawk = new Hawk();
+
+//rabbit.alive = false; //can be changed
+
+console.log(rabbit.alive);
+rabbit.eat();
+rabbit.sleep();
+rabbit.run();
+//fish.run(); //an error, because it can't run (according to our methods)
+//hawk.swim(); //same as above
+//rabbit.fly(); //same as above
+*/
+//SUPER KEYWORD
+//Keyword's used in classes to call the constructor or access the properties and methods of a parent (superclass)
+//this = this object
+//super = the parent
+class Animal { //superclass
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    move(speed){
+        console.log(`The ${this.name} moves at speed of ${speed}km/h`);
+    }
+}
+class Rabbit extends Animal {
+    constructor(name, age, runSpeed){
+        super(name, age); //"super()" constructor of the parent has to be called
+        this.runSpeed = runSpeed;
+    }
+    run(){
+        console.log(`This ${this.name} can run`);
+        super.move(this.runSpeed);
+    }
+}
+class Fish extends Animal {
+    constructor(name, age, swimSpeed){
+        super(name, age);
+        this.swimSpeed = swimSpeed;
+    }
+    swim(){
+        console.log(`This ${this.name} can swim`);
+        super.move(this.swimSpeed);
+    }
+}
+class Hawk extends Animal {
+    constructor(name, age, flySpeed){
+        super(name, age);
+        this.flySpeed = flySpeed;
+    }
+    fly(){
+        console.log(`This ${this.name} can fly`);
+        super.move(this.flySpeed);
+    }
+}
+
+const rabbit = new Rabbit("rabbit", 1, 25);
+const fish = new Fish("fish", 2, 20);
+const hawk = new Hawk("hawk", 3, 50);
+
+console.log(rabbit.name);
+console.log(rabbit.age);
+console.log(rabbit.runSpeed);
+
+rabbit.run();
+fish.swim();
+hawk.fly();
+//GETTERS & SETTERS
+//Getter is a special method that makes a property readible
+//Setter is a special method that makes a property writable
+//Can be used to modify a value when reading/writing a property
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    set width(newWidth) { //setter
+        if(newWidth > 0) {
+            this._width = newWidth; //"_" means that "width" is a private property and shouldn't be touched by other developers
+        }
+        else {
+            console.error("Width must be a positive number"); //an error message
+        }
+    }
+    set height(newHeight) { //setter
+        if(newHeight > 0) {
+            this._height = newHeight; //"_" means that "width" is a private property and shouldn't be touched by other developers
+        }
+        else {
+            console.error("Height must be a positive number"); //an error message
+        }
+    }    
+}
+
+const rectangle = new Rectangle(-1000000, "pizza");
+
+console.log(rectangle.width, rectangle.height);
