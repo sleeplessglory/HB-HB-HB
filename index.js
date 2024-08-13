@@ -963,17 +963,20 @@ const total = prices.reduce(sum);
 console.log(`$${total.toFixed(2)}`);
 
 function sum(previous, element) { //previous sum of elements and a current element
-    return previous + element; //this sum is a new "previous" element for the next pair of elements
+    return previous + element; //this sum is a new "previous" element for the next pair of elements (explained below)
 }
-
-
+// [5, 30, 10, 25, 15, 20]; for the first iteration the sum (5+30=35). Now the initial array is reduced to a smaller one: [35, 10, 25, 15, 20]
+// [35, 10, 25, 15, 20]; for the second iteration the sum is 35+10=45. The reduced array now is [45, 25, 15, 20]
+// [45, 25, 15, 20]; for the next iteration now the sum is 45+25=70. The new array: [70, 15, 20]
+// [70, 15, 20] will be reduced into [85, 20]
+// [85, 20] will be reduced to the final single value sum=85+20=105. The whole array has been reduced into the value (according to the rule of sum specified)
 const grades = [75, 50, 90, 80, 65, 95];
 const maximum = grades.reduce(getMax);
 
 console.log(maximum);
 
 function getMax(previous, element) { //"previous" can also be called "accumulator"
-    return Math.max(previous, element);
+    return Math.max(previous, element); //
 }
 */
 //FUNCTION EXPRESSIONS
@@ -981,9 +984,9 @@ function getMax(previous, element) { //"previous" can also be called "accumulato
 /*
 const hello = function() { //Assigning a function to a variable
     console.log("Hello");
-}
+};
 
-hello();
+hello(); //The function() will be called now by the name it was assigned to
 
 setTimeout(hello, 3000); //hello() will be executed after 3000ms = 3s
 setTimeout(function(){ //An entire f() was passed as an argument (treated as a value)
@@ -1030,7 +1033,7 @@ console.log(sumEvenNums);
 /*
 const hello = function() { //function expression. Now there's a hello() function
     console.log("Hello");
-}
+};
 
 hello(); //function expression invoking (calling)
 
@@ -1045,10 +1048,10 @@ setTimeout(() => console.log("Goodbye!"), 3000);
 
 const numbers = [1, 2, 3, 4, 5, 6];
 
-const squares = numbers.map((element) => Math.pow(element, 2)); //We don't return those elements
+const squares = numbers.map((element) => Math.pow(element, 2)); //We don't "return" those elements
 console.log(squares);
 
-const oddNums = numbers.filter((element) => element % 2 !== 0); //We don't return the elements back when using "=>"
+const oddNums = numbers.filter((element) => element % 2 !== 0); //We don't "return" the elements back when using "=>"
 console.log(oddNums);
 
 const sum = numbers.reduce((accumulator, element) => accumulator + element);
@@ -1056,18 +1059,18 @@ console.log(sum);
 */
 //JAVASCRIPT OBJECTS
 //Collections of related properties and/or methods that can represent real world objects (people, products, places)
-// object = {key:value,   //properties
-//           function()}  //methods
+// object = {key:value,       //properties
+//               function()};  //methods
 /*
 const person = { //an object ("const" is optional)
     firstName: "Florence", //key: value,
-    lastName: "Welch",
+    lastName: "Welch", //for object properties or methods we separate them with "," (even functions end with it, not ";")
     age: 37,
     isEmployed: true,
-    sayHello: function() {console.log("Hi! I'm Florence. I'm English. AHAHAHHA")}, //Do not use ";" in the end. Use "," for an object instead
+    sayHello: function() {console.log("Hi! I'm Florence. I'm English. AHAHAHHA")}, //Do not use ";" in the end. Use "," within objects instead
     sing: () => {console.log("Some things you let go in order to live. While all around you the buildings sway, You sing it out loud, Who made us this way?")}, //arrow functions can be applied too
     eat: () => {console.log("I'm eating this salad now!")},
-}
+};
 
 console.log(person.firstName); //access any property of the object
 console.log(person.lastName);
@@ -1078,6 +1081,7 @@ person.eat();
 */
 //THIS
 //"this" is a reference to the object where "this" is used. The object depends on the immediate context.
+//Used in object methods, where this refers to the object that the method is attached to, thus allowing the same method to be reused on different objects
 //person.name = this.name
 /*
 const person = {
@@ -1085,7 +1089,7 @@ const person = {
     favFood: "spaghetti",
     sayHello: function(){console.log(`I'm ${this.name}`)}, //we use "this.name" (or can use "person.name"), otherwise it won't show it
     eat: () => {console.log(`${person.name} is eating ${person.favFood}`)}, //"this." doesn't work with arrow functions. Use the function() itself or specify properties as "objectName." ("person.")
-}
+};
 person.sayHello();
 person.eat();
 
@@ -1094,7 +1098,7 @@ const person2 = {
     favFood: "pizza",
     sayHello: function(){console.log(`I'm ${this.name}`)}, //we use "this.name" (or can use "person.name"), otherwise it won't show it
     eat: () => {console.log(`${person2.name} is eating ${person.favFood}`)}, //"this." doesn't work with arrow functions. Use the function() itself or specify properties as "objectName." ("person." this time)
-}
+};
 person2.eat();
 */
 //CONSTRUCTORS
@@ -1177,7 +1181,7 @@ console.log(MathUtil.getArea(10));
 
 
 class User {
-    static userCount = 0;
+    static userCount = 0; //can't be accessed by "this", only by class (commented below)
     constructor(username) {
         this.username = username;
         User.userCount++; //"userCount" is static and belongs to the class only
@@ -1214,7 +1218,7 @@ class Animal {
         console.log(`This ${this.name} is sleeping`);
     }
 }
-class Rabbit extends Animal { //"extends" sets a relationship that "Animal" is a parent for a "Rabbit" (child)
+class Rabbit extends Animal { //"extends" sets a relationship that "Animal" is a parent class for a "Rabbit" (child class)
     name = "rabbit";
     run() {
         console.log(`This ${this.name} is running`);
@@ -1251,6 +1255,7 @@ rabbit.run();
 //Keyword's used in classes to call the constructor or access the properties and methods of a parent (superclass)
 //this = this object
 //super = the parent
+/*
 class Animal { //superclass
     constructor(name, age){
         this.name = name;
@@ -1302,34 +1307,102 @@ console.log(rabbit.runSpeed);
 rabbit.run();
 fish.swim();
 hawk.fly();
+*/
 //GETTERS & SETTERS
 //Getter is a special method that makes a property readible
 //Setter is a special method that makes a property writable
-//Can be used to modify a value when reading/writing a property
+//Can be used to modify a value when reading/writing a property. So, users don't input inappropriate values
 class Rectangle {
-    constructor(width, height) {
+    constructor(width, height){
         this.width = width;
         this.height = height;
     }
-
-    set width(newWidth) { //setter
+    set width(newWidth){ //for a Setter we specify the property "width"
         if(newWidth > 0) {
-            this._width = newWidth; //"_" means that "width" is a private property and shouldn't be touched by other developers
+            this._width = newWidth; //"_width" means it's a private property that shouldn't be touched by other developers
         }
         else {
-            console.error("Width must be a positive number"); //an error message
+            console.error("Width must be a positive number"); //"".error" is used to show an error within the console
         }
     }
-    set height(newHeight) { //setter
+    set height(newHeight){
         if(newHeight > 0) {
-            this._height = newHeight; //"_" means that "width" is a private property and shouldn't be touched by other developers
+            this._height = newHeight;
         }
         else {
-            console.error("Height must be a positive number"); //an error message
+            console.error("Height must be a positive number"); //"".error" is used to show an error within the console
         }
-    }    
+    }
+    get width(){
+        return this._width; //now width is not only writable but also readable
+    }
+    get height(){
+        return this._height;
+    }
+
+    get area(){ //with Getter now this will be accessed as if it was a property below (technically it's not)
+        return this._width * this._height;
+    }
 }
 
-const rectangle = new Rectangle(-1000000, "pizza");
+//const rectangle = new Rectangle(-1000000, "pizza"); //testing setters
+const rectangle = new Rectangle(3, 4); //still are undefined, since with Setters they're writable now, but not readable yet! Add Getters now. Values are shown now
 
-console.log(rectangle.width, rectangle.height);
+rectangle.width = 5; //can be changed
+rectangle.height = 6;
+
+console.log(rectangle.width);
+console.log(rectangle.height);
+console.log(rectangle.area); //"area" is being accessed as if it was a property (technically it's not)
+
+
+class Person {
+    constructor(firstName, lastName, age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    set firstName(newFirstName){
+        if(typeof newFirstName === "string" && newFirstName.length > 0) {
+            this._firstName = newFirstName;
+        }
+        else {
+            console.error("First name must be a non-empty string");
+        }
+    }
+    set lastName(newLastName){
+        if(typeof newLastName === "string" && newLastName.length > 0) {
+            this._lastName = newLastName;
+        }
+        else {
+            console.error("Last name must be a non-empty string");
+        }
+    }
+    set age(newAge){
+        if(typeof newAge === "number" && newAge >=0 ) {
+            this._age = newAge;
+        }
+        else {
+            console.error("Age must be a positive number");
+        }
+    }
+    get firstName(){
+        return this._firstName;
+    }
+    get lastName(){
+        return this._lastName;
+    }
+    get fullName(){ //still can add this Getter even if we don't have such property (pretending as it was)
+        return this._firstName + " " + this.lastName;
+    }
+    get age(){
+        return this._age;
+    }
+}
+//const person1 = new Person(420, 69, "pizza"); //variables are inappropriate (we'll use setters again)
+const person1 = new Person("Florence", "Welch", 37); //legitimate values now
+
+console.log(person1.firstName);
+console.log(person1.lastName);
+console.log(person1.fullName);
+console.log(person1.age);
