@@ -1309,9 +1309,10 @@ fish.swim();
 hawk.fly();
 */
 //GETTERS & SETTERS
-//Getter is a special method that makes a property readible
+//Getter is a special method that makes a property readable
 //Setter is a special method that makes a property writable
 //Can be used to modify a value when reading/writing a property. So, users don't input inappropriate values
+/*
 class Rectangle {
     constructor(width, height){
         this.width = width;
@@ -1406,3 +1407,150 @@ console.log(person1.firstName);
 console.log(person1.lastName);
 console.log(person1.fullName);
 console.log(person1.age);
+*/
+//DESTRUCTURING
+//Allows to extract value from arrays and objects, then assign them to variables in a convenient way
+//"[]" is used to perform array destructuring
+//"{}" to perform object destructuring
+//Let's swap the value of 2 variables
+/*
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a]; //[a, b] is destructuring
+console.log(a, b); //2 and 1 (swapped)
+
+
+//Swap 2 elements in array
+const colours = ["red", "green", "blue", "black", "white"];
+
+[colours[0], colours[4]] = [colours[4], colours[0]];
+
+console.log(colours); // ["white", "green", "blue", "black", "red"]
+
+
+//Assign array elements to variables
+//arrayName = [firstElementName, secondElementName, ];
+// [firstVariableName, secondVariableName, ... (if we want)] = arrayName; that's how we destruct the array and assign array elements to variables
+const [firstColour, secondColour, thirdColour, ...extraColours] = colours; //for the rest 2 colours we used "rest" parameter (...) and called them as a new array ("extraColours")
+
+console.log(firstColour);
+console.log(secondColour);
+console.log(thirdColour);
+console.log(extraColours);
+
+
+//Extract values from objects
+const person1 = {
+    firstName: "Florence",
+    lastName: "Welch",
+    age: 37,
+    job: "Singer"
+}
+const person2 = {
+    firstName: "Stefani",
+    lastName: "Germanotta",
+    age: 38,
+  //job: "Singer" let's pretend there's no such property
+}
+
+const {firstName, lastName, age, job="unemployed"} = person2; //we can set a default value while destructuring (e.g. for job)
+console.log(firstName);
+console.log(lastName);
+console.log(age);
+console.log(job);
+
+
+//Destructure in function parameters
+function displayPerson({firstName, lastName, age, job="unemployed"}){ //when the object is received, it's destructured within "{firstName, ...}" parameter
+    console.log(`name: ${firstName} ${lastName}`);
+    console.log(`age: ${age}`);
+    console.log(`job: ${job}`);
+}
+displayPerson(person2); //let's pass "person1" object to the function
+*/
+//NESTED OBJECTS
+//Objects inside of other objects
+//Allows you to represent more complex data structures
+//Person{Adress{}, ContactInfo{}}
+//ShoppingCart{Keyboard{}, Mouse{}, Monitor{}}
+/*
+const person = {
+    fullName: "Florence Welch",
+    age: 37,
+    isSinger: true,
+    hobbies: ["reading", "writing", "cooking"],
+    address: {
+        street: "God only knows...",
+        city: "London",
+        country: "Great Britain"
+    }
+}
+
+console.log(person.fullName);
+console.log(person.hobbies);
+console.log(person.address); //returns an entire object
+console.log(person.address.city); //in order to access the property of the nested class you must use "." again after its name
+
+for(const property in person.address) { //to loop through nested object's properties
+    console.log(person.address[property]);
+}
+
+
+class Person {
+    constructor(name, age, ...address){ //rest parameter is used
+        this.name = name;
+        this.age = age;
+        this.address = new Address(...address); //calling the constructor of "Address" class (spread operator used)
+    }
+}
+class Address {
+    constructor(street, city, country) {
+        this.street = street;
+        this.city = city;
+        this.country = country;
+    }
+}
+
+const person1 = new Person("Florence", 37, "Secret Street", 
+                                           "London", 
+                                           "Great Britain");
+
+const person2 = new Person("Ann", 28, "Sunny Alley",
+                                      "Milan",
+                                      "Italy");
+
+const person3 = new Person("Martin", 25, "Night Knight",
+                                         "Montreal",
+                                         "Canada");
+
+console.log(person1.address.street);
+console.log(person3.address.country);
+*/
+//ARRAYS OF OBJECTS
+const fruits = [{name: "apple", colour: "green", calories: 90},
+                {name: "orange", colour: "orange", calories: 45},
+                {name: "banana", colour: "red", calories: 105},
+                {name: "coconut", colour: "white", calories: 159},
+                {name: "pineapple", colour: "yellow", calories: 37}];
+
+console.log(fruits[0].name); //first access the element and then the property as you always do
+
+fruits.push({name: "grape", colour: "purple", calories: 62}); //adding an object
+fruits.pop(); //removes the last object of the array
+fruits.splice(1, 2); //.splice() removes the specified objects! (not .split() method)
+
+fruits.forEach(fruit => console.log(fruit.name)); //arrow function meaning "for every 'fruit' do this (=>) console.log(fruit.propertyName)". Instead of "fruit" we could use "i" too, which means "for every 'i'..."
+
+const fruitNames = fruits.map(fruit => fruit.name); //created a new array with .map() method and out of each fruit we picked their names
+console.log(fruitNames);
+
+const yellowFruits = fruits.filter(fruit => fruit.colour === "yellow");
+console.log(yellowFruits);
+const lowCalFruits = fruits.filter(fruit => fruit.calories < 100);
+console.log(lowCalFruits);
+
+const maxCalFruit = fruits.reduce((currentMax, fruit) => 
+                                   fruit.calories > currentMax.calories ? //ternary operator
+                                   fruit : currentMax); //if true, return the new fruit, otherwise the current one remains
+console.log(maxCalFruit.calories); //if you need calories and not the whole object
