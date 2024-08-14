@@ -1528,6 +1528,7 @@ console.log(person1.address.street);
 console.log(person3.address.country);
 */
 //ARRAYS OF OBJECTS
+/*
 const fruits = [{name: "apple", colour: "green", calories: 90},
                 {name: "orange", colour: "orange", calories: 45},
                 {name: "banana", colour: "red", calories: 105},
@@ -1554,3 +1555,202 @@ const maxCalFruit = fruits.reduce((currentMax, fruit) =>
                                    fruit.calories > currentMax.calories ? //ternary operator
                                    fruit : currentMax); //if true, return the new fruit, otherwise the current one remains
 console.log(maxCalFruit.calories); //if you need calories and not the whole object
+*/
+//SORTING
+//.sort() method is used to sort elements of an array in place. We sort them as strings in lexicographic order, not alphabetical.
+//lexicographic = (alphabet + numbers + symbols) as strings
+/*
+let fruits = ["apple", "orange", "banana"];
+let numbers = [5, 6, 2, 3, 1, 7, 4, 9, 8, 10];
+const people = [{name: "Florence", age: 37}, 
+                {name: "Stefani", age: 38}, 
+                {name: "Elizabeth", age: 39}, 
+                {name: "Adele", age: 36}];
+
+fruits.sort();
+console.log(fruits); //["apple", "banana", "orange"]
+
+//numbers.sort();
+//console.log(numbers); //[1, 10, 2, 3, 4, 5, 6, 7, 8, 9] meaning sorting by the first digit priority and then the second, so on... We treat them as strings, not numbers
+numbers.sort((a, b) => a - b); //(a, b) means comparing the current and the next element of initial array (without swapping). (a - b) returns a negative 0 or a positive number
+console.log(numbers); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbers.sort((a, b) => b - a); //for a reverse sorting/order
+console.log(numbers);
+
+people.sort((a, b) => a.age - b.age); //"a" is the 1st object, "b" is the 2nd. "a.age" will access its property, same with "b.age"
+console.log(people); //Objects are sorted by their ages: 36, 37, 38, 39
+people.sort((a, b ) => a.name - b.name);
+console.log(people); //Adele, Florence, Stefani, Elizabeth (making no sense now). Use another formula for strings within the objects!
+people.sort((a, b) => a.name.localeCompare(b.name)); //Adele, Elizabeth, Florence, Stefani
+people.sort((a, b) => b.name.localeCompare(a.name)); //for a reverse option: Stefani, Florence, Elizabeth, Adele
+*/
+//SHUFFLE AN ARRAY
+/*
+const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']; //playing cards array
+//Better to use Fisher-Yates algorithm instead of .sort() to shuffle cards
+function shuffle(array) {
+    for(let i = cards.length - 1; i >=0; i--){
+        const random = Math.trunc(Math.random() * (i + 1)); //random index between the end and the beginning
+        [array[i], array[random]] = [array[random], array[i]];
+    }
+}
+
+shuffle(cards);
+console.log(cards);
+*/
+//DATE OBJECTS
+//Objects that contain values that represet dates and times
+//These date objects can be changed and formatted
+/*
+let date = new Date(); //assigns your current time (we created "date" object, the "new Date()" is a constructor)
+console.log(date); //current date and time
+
+//Date(year, month /from 0 to 11, as arrays/, day, hour, minute, second, ms)
+date = new Date(2024, 0, 1, 2, 3, 4, 5); //Mon Jan 01 2024 02:03:04 GMT+0300
+console.log(date); //Mon Jan 01 2024 02:03:04 GMT+0300
+
+date = new Date("2024-01-02T12:00:00Z"); //"T" stands for "time" and "Z" for the UTC time
+console.log(date); //Tue Jan 02 2024 15:00:00 GMT+0300 since it's +0300 to ours
+
+date = new Date(1700000000000); //ms since the epic date (date when computer thinks it started);
+console.log(date); //Wed Nov 15 2023 01:13:20 GMT+0300
+
+const year = date.getFullYear(); //gets the year of the "date"
+console.log(year); //2023 (off the last "date" assignment)
+
+const month = date.getMonth();
+console.log(month); //10, since November is 10 and January is 0
+
+const day = date.getDate(); //.getDate() is for numbers (of the month), but .getDay() will assign numbers of the week (1 for Monday, 2 for Tuesday, etc.)
+console.log(day); //15
+
+const hour = date.getHours();
+console.log(hour); //1
+
+const minutes = date.getMinutes();
+console.log(minutes); //13
+
+const seconds = date.getSeconds();
+console.log(seconds); //20
+
+date.setFullYear(2024);
+date.setMonth(0);
+date.setDate(1);
+date.setHours(2);
+date.setMinutes(3);
+date.setSeconds(4);
+console.log(date); //Mon Jan 01 2024 02:03:04 GMT+0300
+
+const date1 = new Date("2023-12-31");
+const date2 = new Date("2024-01-01");
+
+if(date2 > date1) {
+    console.log("Happy New Year!");
+}
+*/
+//CLOSURES
+//A function defined inside of another function
+//The inner function has access to the variables and scope of the outer function
+//Allows for private variables and state maintenance
+/*
+function outer() {
+    let message = "Hello";
+    function inner(){ //has access to everything within "outer()"
+        console.log(message);
+    }
+    inner();
+}
+message = "Goodbye"; //won't affect the "message" within "outer()"
+outer(); //message will be shown if we invoke "inner()" within "outer()"
+
+
+function increment(){
+    let count = 0; //no state maintenance in this example (check out the example below)
+    count++;
+    console.log(`Count increased to ${count}`);
+}
+
+increment();
+increment();
+increment(); //"count" is still = 1, since it's initialised while invoking "increment()"
+
+
+function createCounter(){
+    let count = 0; 
+
+    function increment(){
+        count++;
+        console.log(`Count increased to ${count}`);
+    }
+
+    //return {increment} //{increment: increment} is the same, but full version for this line. We return object with the method of "increment"
+    //let's add another function and modify what we return now
+    function getCount(){
+        return count;
+    }
+    return {increment, getCount}; //we added another property "getCount"
+}
+
+const counter = createCounter();
+
+counter.increment(); //count = 1;
+counter.increment(); //count = 2;
+counter.increment(); //count = 3; Similar to invoking the class methods!
+
+//counter.count = 0;
+//console.log(count); //error: "count" is not defined
+//console.log(counter.count); //undefined
+
+console.log(`The current count is ${counter.getCount()}`);
+
+
+function createGame(){ //Closure (now the code inside of it is enclosed for security)
+    let score = 0;
+    function increaseScore(points) {
+        score += points;
+        console.log(`+${points}pts`);
+    }
+    function decreaseScore(points) {
+        score -= points;
+        console.log(`-${points}pts`);
+    }
+    function getScore(){
+        return score;
+    }
+
+    return({increaseScore, decreaseScore, getScore}); //additional code to return an object
+}
+
+const game = createGame();
+
+game.increaseScore(5); //after enclosing the functions into the closure we must use "game" object
+game.increaseScore(6);
+game.decreaseScore(3);
+console.log(`The final score is ${game.getScore()}pts`);
+*/
+//setTimeout() FUNCTION
+//Allows to schedule the execution of a function after an amount of time (milliseconds)
+//Times are approximated (values based on the workload of the JS runtime environment)
+//Not for precise stuff (like stopwatch)
+//setTimeout(callback, delay);
+//clearTimeout(timeoutId) can cancel a timeout before it triggers
+function sayHello(){
+    window.alert("Hello");
+}
+
+setTimeout(sayHello, 3000); //3 seconds delay
+setTimeout(() => {window.alert("Hello")}, 5000); //anonymous function
+
+let timeoutId = setTimeout(() => {window.alert("Hello")}, 9000);
+clearTimeout(timeoutId); //nothing's gonna happen now
+
+
+//let timeoutId; //needs to be declared, but has already been
+function startTimer(){
+    timeoutId = setTimeout(() => window.alert("Hello"), 4000);
+    console.log("Started the timer");
+}
+function clearTimer(){
+    clearTimeout(timeoutId);
+    console.log("Cleared the timer");
+}
