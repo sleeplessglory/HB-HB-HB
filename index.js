@@ -1758,6 +1758,7 @@ function clearTimer(){
 */
 //DIGITAL CLOCK PROGRAM
 //sale.html file involved
+/*
 function updateClock() {
     const now = new Date(); //the current date is stored within this object
     let hours = now.getHours();
@@ -1771,9 +1772,10 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000); //will call the function repeatedly, where 1000 ms means every second
+*/
 //STOPWATCH PROGRAM
 const display = document.getElementById("display");
-let timer = null; //"null" means no value
+let timer; //"null" means no value, holds the ID of "setInterval" function
 let startTime = 0;
 let elapsedTime = 0;
 let isRunning = false;
@@ -1786,10 +1788,18 @@ function start() {
     }
 }
 function stop() {
-
+    if(isRunning) {
+        clearInterval(timer);
+        elapsedTime = Date.now() - startTime;
+        isRunning = false;
+    }
 }
 function reset() {
-
+    clearInterval(timer);
+    startTime = 0;
+    elapsedTime = 0;
+    isRunning = false;
+    display.textContent = "00:00:00:00";
 }
 function update() {
     const currentTime = Date.now();
