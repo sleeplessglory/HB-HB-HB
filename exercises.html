@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Drafts</title>
+        <title>Exercises</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="images/Favicon+How+Big,+How+Blue,+How+Beautiful.jpeg">
     </head>
@@ -248,6 +248,22 @@
         <h1 style="background-color: rgb(206, 206, 206);">setTimeout() function</h1>
         <button onclick="startTimer()">START</button>
         <button onclick="clearTimer()">CLEAR</button>
+        <!--Stopwatch program-->
+        <h1 style="background-color: rgb(206, 206, 206);">Stopwatch program</h1>
+        <div id="stopwatch-body"> <!--Alternative to <body>-->
+            <h1 id="myStopwatch">Stopwatch</h1>
+            <div id="stopwatchContainer">
+                <div id="display">
+                    00:00:00:00
+                </div>
+                <div id="controls">
+                    <button id="startBtn" onclick="start()">Start</button> <!--"onclick" is event handler-->
+                    <button id="stopBtn" onclick="stop()">Stop</button>
+                    <button id="resetBtn" onclick="reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+
 
 
 
