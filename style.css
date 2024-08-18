@@ -213,6 +213,7 @@ dl {
     overflow: auto; /*Shows the scroll bar if needed and doesn't show if no need*/
 }
 /*Display property in CSS*/
+/*Also check out "Calculator program" exercise in JS section below for "grid" value, etc.*/
 #div1 {
     height: 100px;
     width: 120px;
@@ -900,4 +901,55 @@ Counter program*/
 }
 #resetBtn:hover {
     background-color: hsl(243, 67%, 40%);
+}
+/*Calculator program*/
+#keys button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+#keys {
+    display: grid; /**/
+    grid-template-columns: repeat(4, 1fr); /*repeats for every line: 4 buttons, 1fr means 1 fractional unit (each column takes up even amount of space)*/
+    gap: 15px; /*gap between each of the rows*/
+    padding: 25px;
+}
+#calculator {
+    font-family: Circular Standard, Arial, sans-serif;
+    background-color: hsl(241, 88%, 16%);
+    border-radius: 15px;
+    max-width: 600px;
+    overflow: hidden; /*for the display long equations won't overflow*/
+}
+#display {
+    width: 100%;
+    padding: 20px;
+    font-size: 5rem;
+    text-align: left;
+    border: bone;
+    color: white;
+    background-color: hsl(241, 88%, 26%);
+}
+#calculator-body {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: hsl(0, 0%, 95%);
+}
+#keys button:hover {
+    background-color: hsl(0, 0%, 30%);
+}
+#keys button:active {
+    background-color: hsl(0, 0%, 40%);
+}
+.operator-btn {
+    background-color: hsl(0, 70%, 30%); /*can't be applied since already defined the color above*/
 }

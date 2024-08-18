@@ -1774,6 +1774,7 @@ updateClock();
 setInterval(updateClock, 1000); //will call the function repeatedly, where 1000 ms means every second
 */
 //STOPWATCH PROGRAM
+/*
 const display = document.getElementById("display");
 let timer; //"null" means no value, holds the ID of "setInterval" function
 let startTime = 0;
@@ -1817,3 +1818,202 @@ function update() {
     
     display.textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
 }
+*/
+//ES6 MODULES
+//External files that contain reusable code that can be imported into other JS files
+//Write reusable code for many different apps. Can contain variables, classes, functions, etc.
+//Introduced as part of ECMAScript 2015 update
+//Created mathUtil.js file within the current folder to import it
+/*
+import {PI, getCircumference, getArea, getVolume} from "./mathUtil.js"; //destructuring within {}
+
+console.log(PI);
+
+const circumference = getCircumference(10);
+console.log(circumference.toFixed(2));
+*/
+//ASYNCHRONOUS CODE
+//Synchronous code executes line by line consecutively in a sequential
+//manner. Code that waits for an operation to complete
+//Asynchronous code allows multiple operations to be performed concurrently
+//without waiting. Doesn't block the execution flow and allows the program
+//to continue (I/O operations, network requests, fetching data). Handled
+//with: callbacks, promises, async/await
+/*
+//Synchronous code (line by line) example:
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+//Asynchronous code example:
+setTimeout(() => console.log("Task 0"), 3000); //Task 0 will be finished after 3 seconds. Tasks 1-3 will be finished earlier
+
+
+function f1(callback){ //asynchronous function
+    setTimeout(() => {console.log("Task 0")
+                      callback()}, 3000);
+
+}
+function f2(){ //will be executed after f1()
+    console.log("Task 4");
+    console.log("Task 5");
+    console.log("Task 6");
+}
+f1(f2);
+*/
+//ERROR HANDLING
+//Error is an object created to represent a problem that occurs
+//often with user input or establishing a connection. Issues that 
+//generate errors: network errors, promise rejection, security problems
+/*
+//console.lag("Hello"); //Uncaught TypeError (interrupts the flow, so the rest of the code won't be executed)
+//console.log(x); //Uncaught ReferenceError (interrupts too)
+//console.log("You've reached the end!");
+//Handling errors with blocks (so, errors won't interrupt the rest of the code):
+//try {} encloses code that might potentially cause an error
+//catch {} catches and handles any thrown errors from "try {}"
+//finally {} (optional) always executes. Used mostly for clean up
+//e.g. close files, close connections, release resources
+try { //encloses the potential problem
+    console.log(x);
+}
+catch(error) { //catches from "try {}" and handles it
+    console.error(error); //ReferenceError: x is not defined. Use "console.error" to highlight it
+}
+finally { //optional block (used whether an error occurs or not)
+    console.log("This always executes");
+}
+console.log("You've reached the end!");
+
+
+try {
+    const dividend = Number(window.prompt("Enter a dividend: "));
+    const divisor = Number(window.prompt("Enter a divisor: "));
+
+    if(divisor == 0) {
+        throw new Error("You can't divide by 0");
+    }
+    if(isNaN(dividend) || isNaN(divisor)) { //if these variables aren't numbers
+        throw new Error("Values must be a number");
+    }
+    
+    const result = dividend / divisor;
+    console.log(result);
+}
+catch(error) {
+    console.error(error);
+}
+console.log("You've reached the end again!");
+*/
+//CALCULATOR PROGRAM
+/*
+const display = document.getElementById("display");
+
+function appendToDisplay(input){
+    display.value += input;
+}
+function clearDisplay(){
+    display.value = "";
+}
+function calculate(){
+    try {
+        display.value = eval(display.value); //eval() is kind of a calculator itself, which returns what you specify within "()"
+    }
+    catch (error) {
+        display.value = "Error";
+    }
+}
+*/
+//DOM (DOCUMENT OBJECT MODEL)
+//Object() that represents the page you see in the web browser and
+//provides you with an API to Internet with it. Web browser constructs
+//the DOM when it loads an HTML document and structures all the elements
+//in a tree-like representation. JS can access the DOM to dynamically
+//change the content, structure and style of a web page
+/*
+console.log(document); //shows the DOM in the console
+console.dir(document); //(directory) shows all the properties of the object
+
+//document.title = "How Big, How Blue, How Beautiful"; //accessed the "title" property and changed it
+//document.body.style.backgroundColor = "hsl(241, 88%, 26%)";
+const username = "sleeplessglory";
+const welcomeMsg = document.getElementById("welcome-msg");
+welcomeMsg.textContent += username === "" ? "Guest" : username;
+*/
+//ELEMENT SELECTORS
+//Methods used to target and manipulate HTML elements that allow you to
+//select one or multiple HTML elements from the DOM (Document Object Model)
+//document.getElementById() returns //element or null
+//document.getElementByClassName()  //HTML collection
+//document.getElementsByTagName()   //HTML collection
+//document.querySelector()          //1st matching element or null
+//document.querySelectorAll()       //nodelist (which has built-in methods) is static (they do not update automatically)
+/*
+const myHeading = document.getElementById("my-heading"); //if the ID is misspelled, the console shows "null"
+myHeading.style.backgroundColor = "yellow";
+myHeading.style.textAlign = "center";
+console.log(myHeading); //shows an HTML element with an inline CSS
+
+
+let fruits = document.getElementsByClassName("fruits");
+fruits[0].style.backgroundColor = "yellow"; //acesses the [0] index object (1st out of 3 <div> objects)
+
+for (let fruit of fruits) {
+    fruit.style.backgroundColor = "green"; //every <div> object's highlighted
+}
+
+//fruits.forEach(); //TypeError since HTML collections don't have .forEach() method
+Array.from(fruits).forEach(fruit => { //Array.from() returns a new array, where we can use .forEach()
+    fruit.style.backgroundColor = "gray";
+});
+
+console.log(fruits); //returns an HTML collection (3 <div> objects)
+
+
+const h4Elements = document.getElementsByTagName("h4");
+h4Elements[0].style.backgroundColor = "pink";
+
+for (let h4Element of h4Elements) {
+    h4Element.style.backgroundColor = "pink";
+}
+
+const liElements = document.getElementsByTagName("li");
+for (let liElement of liElements) {
+    liElement.style.fontSize = "1.2em";
+    liElement.style.backgroundColor = "lightgreen";
+}
+//or we can turn these HTML collections into an array and use array methods
+Array.from(h4Elements).forEach(h4Element => {
+    h4Element.style.backgroundColor = "pink";
+});
+Array.from(liElements).forEach(liElement => {
+    liElement.style.backgroundColor = "lightgreen";
+    liElement.style.fontSize = "1.2em";
+});
+
+console.log(h4Elements); //returns an HTML collection (2 <h4> objects)
+console.log(liElements);
+
+
+const element = document.querySelector(".fruits"); //selects the 1st matching element with "fruits" class ("." is specified for it). Class or tag names can be selected
+element.style.fontStyle = "italic"; //"Apple" has been modified
+
+fruits = document.querySelectorAll(".fruits");
+fruits[0].style.fontWeight = "bold"; //"Apple" is bold now
+console.log(fruits); //shows a nodelist with built-in methods (no need to turn them into an array)
+
+fruits.forEach(fruit => {
+    fruit.style.backgroundColor = "lightgreen";
+});
+*/
+//DOM NAVIGATION
+//The process of navigating through the structure of an HTML document using JS
+//HTML elements include but not limited to:
+//.firstElementChild
+//.lastElementChild
+//.nextElementSibling
+//.previousElementSibling
+//.parentElement
+//.children
+const element = document.getElementById("fruits"); //reference to this unordered list
+const firstChild = element.firstElementChild;
+firstChild.style.backgroundColor = "lightgreen";

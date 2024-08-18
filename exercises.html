@@ -263,10 +263,79 @@
                 </div>
             </div>
         </div>
+        <!--Calculator program-->
+        <h1 style="background-color: rgb(206, 206, 206);">Calculator program</h1>
+        <div id="calculator-body">
+            <div id="calculator">
+                <input id="display" readonly>
+                <div id="keys">
+                    <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                    <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+                    <button onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('.')">.</button>
+                    <button onclick="calculate()">=</button>
+                    <button onclick="clearDisplay()" class="operator-btn">C</button>
+                </div>
+            </div>
+        </div>
+        <!--Document Object Model-->
+        <h1 style="background-color: rgb(206, 206, 206);">DOM</h1>
+        <h1 id="welcome-msg">Welcome </h1>
+        <!--Element selectors-->
+        <h1 style="background-color: rgb(206, 206, 206);">Element selectors</h1>
+            <!--document.getElementById()-->
+        <h1 id="my-heading">Food R Us</h1>
+            <!--document.getElementsByClassName()-->
+        <div class="fruits">Apple</div>
+        <div class="fruits">Orange</div>
+        <div class="fruits">Banana</div>
+            <!--document.getElementsByTagName()-->
+        <h4>Root Vegetables</h4>
+        <ul>
+            <li>Beets</li>
+            <li>Carrots</li>
+            <li>Potatoes</li>
+        </ul>
+        <h4>Non-Root Vegetables</h4>
+        <ul>
+            <li>Broccoli</li>
+            <li>Celery</li>
+            <li>Onions</li>
+        </ul>
+        <!--DOM navigation-->
+        <h1 style="background-color: rgb(206, 206, 206);">DOM navigation</h1>
+        <ul id="fruits">
+            <li>Apple</li>
+            <li>Orange</li>
+            <li>Banana</li>
+        </ul>
+        <ul id="vegetables">
+            <li>Carrots</li>
+            <li>Onions</li>
+            <li>Potatoes</li>
+        </ul>
+        <ul id="desserts">
+            <li>Cake</li>
+            <li>Pie</li>
+            <li>Ice cream</li>
+        </ul>
 
 
 
 
-        <script src="index.js"></script>
+
+
+        <script src="index.js"></script> <!--type="module" is needed in order to import/export files (ES6 modules) from other JS files-->
     </body>
 </html>
