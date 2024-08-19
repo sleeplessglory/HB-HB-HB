@@ -963,3 +963,41 @@ Counter program*/
     border: 3px solid;
     font-size: 2rem;
 }
+/*Mouse events*/
+#myBox {
+    background-color: lightblue;
+    width: 300px;
+    height: 300px;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+#click-button {
+    font-size: 3rem;
+}
+/*Key events*/
+#keyBox {
+    background-color: lightblue;
+    width: 200px;
+    height: 200px;
+    font-size: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/*Hide or show HTML*/
+#hs {
+    font-size: 2rem;
+}
+/*NodeLists*/
+.four-buttons {
+    font-size: 4rem;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: hsl(213, 66%, 41%);
+    color: white;
+}

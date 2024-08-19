@@ -1395,7 +1395,7 @@ class Person {
         return this._lastName;
     }
     get fullName(){ //still can add this Getter even if we don't have such property (pretending as it was)
-        return this._firstName + " " + this.lastName;
+        return this._firstName + " " + this._lastName;
     }
     get age(){
         return this._age;
@@ -2106,3 +2106,160 @@ document.getElementById("lunch").insertBefore(newListItem, listItems[4]); //list
 //4. Remove the element
 document.getElementById("lunch").removeChild(newListItem); //removes the new element (child)
 */
+//MOUSE EVENTS
+//eventListener listens for specific events to create interactive web pages
+//These events include: click, mouseover (when we hover over) and mouseout (hover over and then leave it)
+//.addEventListener(event, callback)
+/*
+const myBox = document.getElementById("myBox");
+myBox.addEventListener("click", changeColor);
+function changeColor(event) { //event is an object containing information about smth happening
+    //console.log(event);
+    event.target.style.backgroundColor = "tomato"; //"target" is what tag we clicked on the page
+    event.target.textContent = "OUCH! 🤕";
+}
+//same can be written with function expressions:
+//myBox.addEventListener("click", function(event){
+//    event.target.style.backgroundColor = "tomato"; //"target" is what tag we clicked on the page
+//    event.target.textContent = "OUCH! 🤕";
+//});
+//or arrow functions:
+//myBox.addEventListener("click", event => {...}); //if only 1 parameter, no need to use ()
+myBox.addEventListener("mouseover", event => {
+    event.target.style.backgroundColor = "yellow";
+    event.target.textContent = "Don't do it! 😲";
+});
+myBox.addEventListener("mouseout", event => {
+    event.target.style.backgroundColor = "lightgreen";
+    event.target.textContent = "Click Me 😊";
+});
+
+//Do the same but with a button separately to alter the box
+const clickButton = document.getElementById("click-button");
+clickButton.addEventListener("click", changeColor);
+function changeColor(event) {
+    myBox.style.backgroundColor = "tomato";
+    myBox.textContent = "OUCH! 🤕";
+}
+clickButton.addEventListener("mouseover", event => {
+    myBox.style.backgroundColor = "yellow";
+    myBox.textContent = "Don't do it! 😲";
+});
+clickButton.addEventListener("mouseout", event => {
+    myBox.style.backgroundColor = "lightgreen";
+    myBox.textContent = "Click Me 😊";
+});
+*/
+//KEY EVENTS
+//eventListener listens for specific events to create interactive web pages
+//These events also include: keydown, keyup
+//document.addEventListener(event, callback);
+/*
+document.addEventListener("keydown", event =>{ //when we press any key on the keyboard
+    //console.log(event);
+    //console.log(`Key down = ${event.key}`);
+});
+document.addEventListener("keyup", event => {
+    //console.log(`Key up = ${event.key}`);
+});
+
+
+const keyBox = document.getElementById("keyBox");
+document.addEventListener("keydown", event =>{ //when we press any key on the keyboard
+    keyBox.textContent = "😲";
+    keyBox.style.backgroundColor = "tomato";
+});
+document.addEventListener("keyup", event => {
+    keyBox.textContent = "😊";
+    keyBox.style.backgroundColor = "lightblue";
+});
+
+const moveAmount = 10;
+let x = 0; //initial X-axis value;
+let y = 0; //initial Y-axis value;
+document.addEventListener("keydown", event => {
+    if(event.key.startsWith("Arrow")) { //eventListener works only if the "event.key" starts with "Arrow" (left, up, right, down)
+        event.preventDefault(); //won't be scrolling alongside with the slide bar, just on its own
+        switch(event.key) {
+            case "ArrowUp":
+                y -= moveAmount;
+                break;
+            case "ArrowDown":
+                y += moveAmount;
+                break;
+            case "ArrowLeft":
+                x -= moveAmount;
+                break;
+            case "ArrowRight":
+                x += moveAmount;
+                break;
+        }
+        keyBox.style.top = `${y}px`; //"top" property in pair with "relative" position value in CSS
+        keyBox.style.left = `${x}px`; //"left" property in pair with "relative" position value in CSS
+    }
+});
+*/
+//HIDE OR SHOW HTML
+/*
+const hsButton = document.getElementById("hs");
+const hbImg = document.getElementById("HBimg");
+
+hsButton.addEventListener("click", event => {
+    if(hbImg.style.visibility === "hidden") {
+        hbImg.style.visibility = "visible";
+        hsButton.textContent = "Hide";
+    }
+    else {
+        hbImg.style.visibility = "hidden"; //hides the image, but still reserves its space, whereas "display: none" removes the image and its space too
+        hsButton.textContent = "Show";
+    }
+});
+*/
+//NODELISTS
+//Static collection of HTML elements by (id, class, element)
+//Can be created by using .querySelectorAll()
+//Similar to an array, but no .map(), .filter(), .reduce()
+//NodeList won't update to automatically reflect changes in DOM:
+//E.g. if you remove the element from the DOM, you need to separately remove it from NodeList too
+let buttons = document.querySelectorAll(".four-buttons");
+console.log(buttons);
+
+buttons.forEach(button => {
+    button.style.backgroundColor = "green";
+    button.textContent += "🐉";
+});
+
+buttons.forEach(button => {
+    button.addEventListener("click", event => {
+        event.target.style.backgroundColor = "tomato";
+    });
+});
+
+buttons.forEach(button => {
+    button.addEventListener("mouseover", event => {
+        event.target.style.backgroundColor = "hsl(213, 66%, 66%)";
+    });
+});
+
+buttons.forEach(button => {
+    button.addEventListener("mouseout", event => {
+        event.target.style.backgroundColor = "hsl(213, 66%, 41%)";
+    });
+});
+
+const newButton = document.createElement("button");
+newButton.textContent = "Button 5";
+newButton.classList = "four-buttons"; //"classList" is used when working with an element
+document.body.appendChild(newButton); //has the same CSS properties, since it's in the same class
+
+console.log(buttons); //NodeList shows only 4 buttons without the 5th
+buttons = document.querySelectorAll(".four-buttons"); //select them again to include the 5th button
+console.log(buttons); //now all 5 buttons're within the NodeList
+
+buttons.forEach(button => {
+    button.addEventListener("click", event => {
+        event.target.remove(); //removes the target (button) from the DOM
+        buttons = document.querySelectorAll(".four-buttons"); //the NodeList is being updated too
+        console.log(buttons);
+    });
+});
