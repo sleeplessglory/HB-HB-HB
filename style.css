@@ -1001,3 +1001,34 @@ Counter program*/
     background-color: hsl(213, 66%, 41%);
     color: white;
 }
+/*ClassLists*/
+#my-button {
+    font-size: 4rem;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.enabled { /*this class ain't created yet, will be applied within JS*/
+    background-color: hsl(210, 100%, 50%);
+    color: white;
+}
+.btn-hov{
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.2);
+    font-weight: bold;
+}
+.disabled {
+    background-color: hsl(0, 0%, 60%);
+    color: hsl(0, 0%, 80%);
+}
+#newH1 {
+    font-size: 5rem;
+}
+.another4 {
+    font-size: 4rem;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+/*Rock Paper Scissors game*/
