@@ -1,4 +1,7 @@
 /*External CSS (within .css file)*/
+/*We can specify any amount of classes, IDs, elements within one line 
+simultaneously even with their pseudo-classes or pseudo-elements: 
+.lyrics, #phshoot div:hover, dl {...}*/
 .lyrics {
     text-align: center;
     font-size: 20px;
@@ -584,6 +587,7 @@ article {
     justify-content: space-between; puts space evenly only between the boxes. So, we can adjust the window width
     justify-content: space-around; same as above but also extra little spaces added to the left side of the 1st box and to the right side of the last
     justify-content: space-evenly; space is added evenly everywhere: between the boxes and outside of them
+    justify-content: center; content is in the middle of the X-axis (used with flex-direction as a ROW)
     align-items: flex-start; Imagine for the Y-axis (cross-axis) changes. A default value with no changes at all
     align-items: flex-end; Moves the initial horizontal line to the bottom (still horizontal)
     align-items: center; Moves to the center (still keeps it horizontal)
@@ -594,7 +598,7 @@ article {
     flex-wrap: wrap-reverse; The reverse order from the left bottom angle
     align-content: flex-start; Used in pair with "flex-wrap: wrap" for the Y-axis. With "flex-start" value all the empty spaces between boxes on the Y-axis are gone
     align-content: flex-end; same as above but on the bottom of the page
-    align-content: center; Boxes're centered (still with no space between them on Y-axis)
+    align-content: center; Boxes're centered (still with no space between them on Y-axis) (used with flex-direction as a COLUMN)
     align-content: space-evenly; Put spaces evenly between the top border, the boxes (if more than 1 line) and the bottom border by Y-axis
     align-content: space-between; If more than 1 line of boxes, the 1st is on the top and the 2nd on the bottom
     
@@ -698,10 +702,10 @@ article {
     50%{transform: scale(50%, 50%)}
 }
 @keyframes fade {
-    70%{opacity: 0};
+    70%{opacity: 0}
 }
 @keyframes fade-in {
-    60%{opacity: 1};
+    60%{opacity: 1}
 }
 @keyframes colourChange { /*In this example we change the colour every 20% of the animation duration*/
     0%{background-color: hsl(0, 87%, 44%)}
@@ -1032,3 +1036,91 @@ Counter program*/
     padding: 10px 15px;
 }
 /*Rock Paper Scissors game*/
+#game-body {
+    font-family: Circular Standard, Arial, sans-seif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#game-name{
+    font-size: 3.5rem;
+    color: hsl(240, 86%, 20%);
+}
+.choices{
+    margin-bottom: 30px;
+}
+.choices button {
+    font-size: 7.5rem;
+    min-width: 160px;
+    margin: 0px 10px; /*0px on the top and bottom, 10px on the sides*/
+    border-radius: 90px;
+    border: 7px solid hsl(306, 86%, 39%);
+    background-color: hsl(213, 66%, 41%);
+    width: 180px;
+    height: 180px; 
+    align-items: center;
+    transition: background-color 0.5s ease;
+}
+.choices button:hover {
+    background-color: hsl(213, 66%, 51%);
+    border: 7px solid hsl(306, 86%, 49%);
+    cursor: pointer;
+}
+#playerDisplay, #computerDisplay {
+    font-size: 2.5rem;
+    color: hsl(240, 86%, 30%);
+}
+#resultDisplay {
+    font-size: 5rem;
+    margin: 30px 0;
+}
+.greenText, #playerScoreDisplay {
+    color: hsl(126, 87%, 24%);
+}
+.redText, #computerScoreDisplay {
+    color: hsl(0, 87%, 34%);
+}
+.pinkText {
+    color: hsl(306, 86%, 29%);
+}
+.scoreDisplay {
+    font-size: 2rem;
+}
+/*Image slider (index.html reference)*/
+.slider {
+    position: relative;
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
+}
+.slider img {
+    width: 100%;
+    display: none;
+}
+img.displaySlide { /*applies if the <img> elements have this class*/
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+.slider button {
+    position: absolute; /*towards the ".slider"*/
+    top: 50%; /*raises up the buttons for the 50% of the slider height*/
+    transform: translateY(-50%); /*moves it up for 50% of the button height (now all right in the middle)*/
+    font-size: 2rem;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+.prev {
+    left: 0;
+}
+.next {
+    right: 0;
+}
+@keyframes fade {
+    from {opacity: 0.3}
+    to {opacity: 1}
+}

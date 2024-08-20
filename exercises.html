@@ -381,7 +381,27 @@
         <button class="another4">Button 2</button>
         <button class="another4">Button 3</button>
         <button class="another4">Button 4</button>
+        <!--Rock paper scissors game-->
+        <h1 style="background-color: rgb(206, 206, 206);">Rock Paper Scissors game</h1>
+        <div id="game-body">
+            <h1 id="game-name">Rock - Paper - Scissors</h1>
+            <div class="choices">
+                <button onclick="playGame('rock')">👊🏻</button>
+                <button onclick="playGame('paper')">✋🏻</button>
+                <button onclick="playGame('scissors')">✌🏻</button>
+            </div>
+            <div id="playerDisplay">PLAYER: </div>
+            <div id="computerDisplay">COMPUTER: </div>
+            <div id="resultDisplay"></div>
+            <div class="scoreDisplay"> Player Score:
+                <span id="playerScoreDisplay">0</span> <!--<span> is used since will get another styling apart from the <div>-->
+            </div>
+            <div class="scoreDisplay"> Computer Score:
+                <span id="computerScoreDisplay">0</span>
+            </div>
+        </div> 
         
+
 
 
 

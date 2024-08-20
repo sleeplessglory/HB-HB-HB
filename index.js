@@ -1943,6 +1943,7 @@ welcomeMsg.textContent += username === "" ? "Guest" : username;
 //ELEMENT SELECTORS
 //Methods used to target and manipulate HTML elements that allow you to
 //select one or multiple HTML elements from the DOM (Document Object Model)
+//you can specify combinators alongside with the classes (e.g. ".slides img" for descendant combinator)
 //document.getElementById() returns //element or null
 //document.getElementByClassName()  //HTML collection
 //document.getElementsByTagName()   //HTML collection
@@ -2269,7 +2270,7 @@ buttons.forEach(button => {
 //Element property in JS used to interact with an element's list of (CSS) classes
 //Allows to make reusable classes for many elements across the web page
 //add()
-//remove()
+//remove(classOne, classTwo, ...) we can specify any amount of classes, so it removes if any found
 //toggle(remove if present, add if not)
 //replace(oldClass, newClass)
 //contains()
@@ -2344,3 +2345,307 @@ buttons.forEach(button => {
 });
 */
 //ROCK PAPER SCISSORS GAME
+/*
+const choices = ["rock", "paper", "scissors"]; //the array index will be used for random choice of a computer
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay");
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+let playerScore = 0;
+let computerScore = 0;
+
+function playGame(playerChoice) {
+    const computerChoice = choices[Math.trunc(Math.random()*3)]; //computer randomly chooses the array value (indexes 0-2)
+    console.log(computerChoice);
+    let result="";
+
+    if(playerChoice == computerChoice) {
+        result = "IT'S A TIE!";
+    }
+    else {
+        switch(playerChoice){
+            case "rock":
+                result = (computerChoice === "scissors" ? "YOU WIN!" : "YOU LOSE!");
+                break;
+            case "paper":
+                result = (computerChoice === "rock" ? "YOU WIN!" : "YOU LOSE!");
+                break;
+            case "scissors":
+                result = (computerChoice === "paper" ? "YOU WIN!" : "YOU LOSE!");
+                break;
+        }
+    }
+    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
+    computerDisplay.textContent = `COMPUTER: ${computerChoice}`;
+    resultDisplay.textContent = result;
+    resultDisplay.classList.remove("greenText", "redText", "pinkText"); //removes any of the specified classes before the new game
+    switch(result) {
+        case "YOU WIN!":
+            resultDisplay.classList.add("greenText");
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+            break;
+        case "YOU LOSE!":
+            resultDisplay.classList.add("redText");
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
+            break;
+        case "IT'S A TIE!":
+            resultDisplay.classList.add("pinkText");
+            break;
+    }
+}
+*/
+//IMAGE SLIDER
+/*
+const slides = document.querySelectorAll(".slides img");
+let slideIndex = 0;
+let intervalId = null;
+document.addEventListener("DOMContentLoaded", initialiseSlider); //after all the DOM content is loaded, initialise the slider
+
+function initialiseSlider() {
+    if(slides.length > 0) { //for NodeList if we have images, then show them
+        slides[slideIndex].classList.add("displaySlide");
+        intervalId = setInterval(nextSlide, 5000); //after 5s the nextSlide() will be invoked
+    }
+}
+function showSlide(index){
+    if(index >= slides.length){ //if we're on the last slide and press the "next" button
+        slideIndex = 0; //set it to the 1st slide/image (according to the NodeList)
+    }
+    else if(index < 0) { //if we're on the 1st slide and press the "previous" button
+        slideIndex = slides.length - 1; //set it to the last slide/image (according to the NodeList)
+    }
+    slides.forEach(slide => {
+        slide.classList.remove("displaySlide"); //removing the current displaySlide class to show the next image with it
+    });
+    slides[slideIndex].classList.add("displaySlide"); //adding this class to the next image (so, it shows on the web page)
+}
+function prevSlide(){
+    clearInterval(intervalId); //stops the 5s rule and watch the image more
+    slideIndex--;
+    showSlide(slideIndex);
+}
+function nextSlide(){
+    //won't use clearInterval() for the nextSlide() since it won't be looping at all
+    slideIndex++;
+    showSlide(slideIndex);
+}
+*/
+//CALLBACK HELL
+//Situation in JS where callbacks are nested within other callbacks to the
+//degree where the code is difficult to read. It's an old pattern to handle
+//asynchronous functions. Use Promises + async/await to avoid Callback Hell
+/*
+function task1(callback){
+    setTimeout(() => {
+        console.log("Task 1 complete");
+        callback();
+    }, 2000);
+}
+function task2(callback){
+    setTimeout(() => {
+        console.log("Task 2 complete");
+        callback();
+    }, 1000);
+}
+function task3(callback){
+    setTimeout(() => {
+        console.log("Task 3 complete");
+        callback();
+    }, 3000);
+}
+function task4(callback){
+    setTimeout(() => {
+        console.log("Task 4 complete");
+        callback();
+    }, 1500);
+}
+task1(() => { //This is Callback Hell! Nested callbacks within callbacks
+    task2(() => {
+        task3(() => {
+            task4(() => console.log("All tasks complete"));
+        })
+    });
+});
+*/
+//PROMISES
+//An object that manages asynchronous operations. Wrap a Promise Object
+//around {asynchronous code}. "I promise to return a value"
+//PENDING -> RESOLVED or REJECTED
+//new Promise((resolve, reject) => {asynchronous code})
+
+//Do these chores in order:
+//1. Walk the dog
+//2. Clean the kitchen
+//3. Take out the trash
+/*
+function walkDog(){
+    return new Promise((resolve, reject) => { //returns a promise object
+        setTimeout(() => {
+            const dogWalked = true;
+            if(dogWalked) {
+                resolve("You walk the dog"); //resolve() function with its parameter
+            }
+            else {
+                reject("You didn't walk the dog");
+            }
+        }, 1500);
+    });
+}
+function cleanKitchen(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const kitchenCleaned = false;
+            if(kitchenCleaned) {
+                resolve("You clean the kitchen");
+            }
+            else{
+                reject("You didn't clean the kitchen");
+            }
+        }, 2500);
+    });
+}
+function takeOutTrash(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const trashTakenOut = true;
+            if(trashTakenOut) {
+                resolve("You take out the trash");
+            }
+            else {
+                reject("You didn't take out the trash");
+            }
+        }, 500);
+    });
+}
+//walkDog(() => { //Callback Hell
+//    cleanKitchen(() => {
+//        takeOutTrash(() => console.log("You finished all the chores!"));
+//    })
+//})
+walkDog().then(value => {console.log(value); return cleanKitchen();}) //method chaining
+         .then(value => {console.log(value); return takeOutTrash();}) //method chaining
+         .then(value => {console.log(value); console.log("You finished all the chores!")}) //method chaining
+         .catch(error => console.error(error)); //in case any rejections will be caught, where error is the message specified accordingly for reject case
+//After walkDog() is executed, then pass its value to the arrow function which shows it and also return the next function/chore, and so on...
+//If any reject is being caught, the rest of the tasks won't be invoked later on
+*/
+//ASYNC/AWAIT
+//Async makes a function return a promise
+//Await makes an async function wait for a promise
+//Allows you write asynchronous code in a synchronous manner
+//Async doesn't have resolve or reject parameters
+//Everything after Await is placed in an event queue
+/*
+function walkDog(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const dogWalked = true;
+            if(dogWalked) {
+                resolve("You walk the dog");
+            }
+            else {
+                reject("You didn't walk the dog");
+            }
+        }, 1500);
+    });
+}
+function cleanKitchen(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const kitchenCleaned = false;
+            if(kitchenCleaned) {
+                resolve("You clean the kitchen");
+            }
+            else{
+                reject("You didn't clean the kitchen");
+            }
+        }, 2500);
+    });
+}
+function takeOutTrash(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const trashTakenOut = true;
+            if(trashTakenOut) {
+                resolve("You take out the trash");
+            }
+            else {
+                reject("You didn't take out the trash");
+            }
+        }, 500);
+    });
+}
+async function doChores(){
+    try { //handling the errors if we encounter them
+        const walkDogResult = await walkDog(); //await is used only within async functions!
+        console.log(walkDogResult);
+    
+        const cleanKitchenResult = await cleanKitchen();
+        console.log(cleanKitchenResult);
+    
+        const takeOutTrashResult = await takeOutTrash();
+        console.log(takeOutTrashResult);
+    
+        console.log("You finished all the chores!");
+    }
+    catch(error) { //catches the error within "try"
+        console.error(error);
+    }
+}
+doChores();
+*/
+//JSON FILES
+//JSON (Java Script Object Notation) data-interchange format
+//Used for exchanging data between a server and a web application
+//JSON files {key: value} OR [value1, value2, value3] OR [{}, {}, {}]
+
+//JSON.stringify() converts a JS object/array to a JSON string
+//JSON.parse() converts a JSON string to a JS object/array
+const names = ["Florence", "Elizabeth", "Stefani", "Adele"];
+console.log(names);
+let jsonString = JSON.stringify(names);
+console.log(jsonString);
+
+const person = {"name": "Florence", "age": 37, "isEmployed": true, "hobbies": ["singing", "cooking"]}
+console.log(person);
+jsonString = JSON.stringify(person);
+console.log(jsonString);
+
+const people = [{"name": "Florence", "age": 37, "isEmployed": true},
+                {"name": "Elizabeth", "age": 39, "isEmployed": true},
+                {"name": "Stefani", "age": 38, "isEmployed": true},
+                {"name": "Adele", "age": 36, "isEmployed": true}]
+console.log(people);
+jsonString = JSON.stringify(people);
+console.log(jsonString);
+
+
+//In order to convert a JSON string to a JS object/array, use a pair of ` ` around them and .parse()
+const jsonNames = `["Florence", "Elizabeth", "Stefani", "Adele"]`;
+console.log(jsonNames);
+let parsedData = JSON.parse(jsonNames);
+console.log(parsedData);
+
+const jsonPerson = `{"name": "Florence", "age": 37, "isEmployed": true, "hobbies": ["singing", "cooking"]}`
+console.log(jsonPerson);
+parsedData = JSON.parse(jsonPerson);
+console.log(parsedData);
+
+const jsonPeople = `[{"name": "Florence", "age": 37, "isEmployed": true},
+                     {"name": "Elizabeth", "age": 39, "isEmployed": true},
+                     {"name": "Stefani", "age": 38, "isEmployed": true},
+                     {"name": "Adele", "age": 36, "isEmployed": true}]`
+console.log(jsonPeople);
+parsedData = JSON.parse(jsonPeople);
+console.log(parsedData);
+
+
+fetch("json/person.json") //the file directory specified
+    .then(response => response.json()) //response.json() returns a Promise
+    .then(value => console.log(value))
+//  .then(values => values.forEach(value => console.log(value))); if you wanna iterate through all the objects separately, use this line instead of the last
+//  you can specify the properties of the objects (e.g. value.name or value.age)
+    .catch(error => console.error(error));
