@@ -2604,6 +2604,7 @@ doChores();
 
 //JSON.stringify() converts a JS object/array to a JSON string
 //JSON.parse() converts a JSON string to a JS object/array
+/*
 const names = ["Florence", "Elizabeth", "Stefani", "Adele"];
 console.log(names);
 let jsonString = JSON.stringify(names);
@@ -2644,8 +2645,165 @@ console.log(parsedData);
 
 
 fetch("json/person.json") //the file directory specified
-    .then(response => response.json()) //response.json() returns a Promise
+    .then(response => response.json()) //we'll be provided by response object which we convert into JSON format (response.json()) which returns a Promise
     .then(value => console.log(value))
 //  .then(values => values.forEach(value => console.log(value))); if you wanna iterate through all the objects separately, use this line instead of the last
 //  you can specify the properties of the objects (e.g. value.name or value.age)
-    .catch(error => console.error(error));
+    .catch(error => console.error(error)); //if rejections are detected
+*/
+//2D ARRAYS
+//Multi-dimensional array that stores a matrix of data in rows and columns
+//Useful for games, spreadsheets or representing images
+/*
+const matrix = [[1, 2, 3], 
+                [4, 5, 6], 
+                [7, 8, 9],
+                ['*', 0, '#']];
+
+for(let row of matrix) {
+    const rowString = row.join(' ');
+    console.log(rowString);
+}
+
+matrix[0][0] = 'X'; //[row][column]
+matrix[0][1] = 'O';
+matrix[0][2] = 'X';
+
+matrix[1][0] = 'O';
+martix[1][1] = 'X';
+martix[1][2] = 'O';
+
+martix[2][0] = 'X';
+matrix[2][1] = 'O';
+matrix[2][2] = 'X';
+*/
+//CONSOLE.TIME()
+//Tool that allows to measure the time it takes for a section
+//of code or process to execute. Great for identifying performance "bottlenecks"
+//console.time("label"); to start measuring
+//console.timeEnd("label"); to end measuring
+/*
+console.time("test"); //pass any label you want to identify the process
+for (let i=0; i<1000000000; i++) {
+    //do smth
+}
+console.timeEnd("test");
+
+
+function loadData(){
+    console.time("loadData");
+    for(let i=0; i<1000000000; i++) {
+        //pretend loading
+    }
+    console.timeEnd("loadData");
+}
+loadData();
+
+
+function processData(){
+    console.time("processData");
+    for(let i=0; i<1000000; i++) {
+        //pretend processing
+    }
+    console.timeEnd("processData");
+}
+processData();
+*/
+//FORMAT CURRENCY
+//.toLocaleString() returns a string with a language 
+//sensitive representation of a number
+
+//Intl.NumberFormat() is another (advanced) way to format currency (to learn on my own)
+
+//number.toLocaleString("locale", {options});
+//'locale' specifies the language (undefined = default set in browsers)
+//'options' is an object with formatting options
+/*
+let number = 123456.789;
+number = number.toLocaleString("en-AU"); //English (Australia)
+console.log(`Australian format: ${number}`);
+
+number = number.toLocaleString("nl-NL");
+console.log(`Dutch format: ${number}`);
+
+number = number.toLocaleString("de-DE");
+console.log(`German format: ${number}`);
+
+number = number.toLocaleString(undefined);
+console.log(`My format: ${number}`);
+
+number = number.toLocaleString("de-DE", {style: "currency", currency: "EUR"});
+console.log(`German format with currency: ${number}`);
+*/
+//JS COOKIES
+//Small text file stored on your computer used to remember
+//information about the user, saved in name=value pairs
+/*
+console.log(navigator.cookieEnabled); //returns true, meaning cookies're enabled
+
+//document cookie property can hold more than 1 object
+document.cookie = "firstName = sleeplessglory; expires = 11 November, 2024 12:00:00 UTC; path=/"; //default path is used, firstName is chosen as a type of cookie. An object, not a string
+document.cookie = "age = 22; expires = 11 January 2024 12:00:00 UTC; path=/"; //won't be shown since expired
+console.log(document.cookie);
+
+
+//to overwrite use it again with another values
+document.cookie = "firstName = Stefani; expires = 11 December, 2024 12:00:00 UTC; path=/"; //default path is used, firstName is chosen as a type of cookie. An object, not a string
+document.cookie = "age = 38; expires = 28 March 2025 12:00:00 UTC; path=/";
+console.log(document.cookie);
+
+
+function setCookie(name, value, daysToLive) {
+    const date = new Date();
+    date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = `${name}=${value}; ${expires}; path=/`; //pattern to assemble cookies (not manually)
+}
+setCookie("email", "random@gmail.com", 365);
+console.log(document.cookie);
+
+
+function deleteCookie(name){
+    setCookie(name, null, null);
+}
+deleteCookie("email");
+deleteCookie("firstName");
+deleteCookie("age");
+console.log(document.cookie);
+
+
+setCookie("firstName", "Florence", 365);
+setCookie("lastName", "Welch", 365);
+function getCookie(name) {
+    const cookieDecoded = decodeURIComponent(document.cookie);
+    const cookieArray = cookieDecoded.split("; ");
+    console.log(cookieArray);
+    let result = null;
+
+    cookieArray.forEach(element => {
+        if(element.indexOf(name) == 0) {
+            result = element.substring(name.length + 1); //substring of "firstName=Florence" element which returns "Florence" only
+        }
+    })
+    return result;
+}
+console.log(getCookie("firstName")); //Florence
+console.log(getCookie("lastName")); //Welch
+console.log(document.cookie);
+
+
+const firstText = document.querySelector("#firstText");
+const lastText = document.querySelector("#lastText");
+const submitBtn = document.querySelector("#submit-button");
+const cookieBtn = document.querySelector("#cookie-button");
+
+submitBtn.addEventListener("click", () => {
+    setCookie("firstName", firstText.value, 365);
+    setCookie("lastName", lastText.value, 365);
+});
+cookieBtn.addEventListener("click", () => {
+    firstText.value = getCookie("firstName");
+    lastText.value = getCookie("lastName");
+});
+*/
+//FETCH DATA FROM AN API
